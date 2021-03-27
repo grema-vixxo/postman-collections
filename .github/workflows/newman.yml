@@ -1,6 +1,2 @@
 - name: Newman Action
   uses: matt-ball/newman-action@v0.2.4
-- uses: actions/checkout@master
-- uses: matt-ball/newman-action@master
-  with:
-    collection: gateway.json
