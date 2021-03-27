@@ -1,4 +1,4 @@
-name: Newman Run
+name: Newman Runs
 
 on:
   pull_request:
