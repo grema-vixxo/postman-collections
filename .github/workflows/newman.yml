@@ -12,5 +12,5 @@ jobs:
       - uses: actions/checkout@master
       - uses: matt-ball/newman-action@master
         with:
-          collection: Gateway.json
-          environment: Vixxo Globals.postman_environment
+          collection: Postman Collections/Gateway.json
+          environment: Postman Collections/Vixxo Globals.postman_environment.json
