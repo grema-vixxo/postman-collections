@@ -1,0 +1,2483 @@
+{
+  "info": {
+    "_postman_id": "0369d2aa-efb4-49eb-9e9a-3512695cb7ac",
+    "name": "Gateway",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Integration Tests",
+      "item": [
+        {
+          "name": "Invoice - Successful",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "81d03bd2-c1af-4e26-8a86-87b40a94d0f8",
+                "exec": [
+                  "pm.test(\"Response time is less than 1000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Received OK status code\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "var responseJson = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Proper base response structure\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.expect(responseJson.success).to.exist;\r",
+                  "    pm.expect(responseJson.messageList).to.exist;\r",
+                  "    pm.expect(responseJson.errorMessageList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Request was succcessful\", function () {\r",
+                  "    pm.expect(responseJson.success).to.equal(true);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Proper invoice response structure\", function () {\r",
+                  "    pm.expect(responseJson.invoice).to.exist;\r",
+                  "    pm.expect(responseJson.invoice.viid).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Retrieved the requested invoice\", function () {\r",
+                  "    var pathParts = pm.request.url.getPath().split(\"/\");\r",
+                  "    var invoiceId = pathParts[pathParts.length - 1];\r",
+                  "\r",
+                  "    pm.expect(responseJson.invoice.viid.toString(), \"Did not receive the invoice that was requested\").to.equal(invoiceId)\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "96f6dda2-657d-4ef5-b6c7-f396bd408d7f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/invoice/106090312"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice - NotFound",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "54cf229b-8935-40af-ac52-5352f66c27be",
+                "exec": [
+                  "pm.test(\"Response time is less than 1000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Received Bad Request status code\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "\r",
+                  "var responseJson = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Proper base response structure\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.expect(responseJson.success).to.exist;\r",
+                  "    pm.expect(responseJson.messageList).to.exist;\r",
+                  "    pm.expect(responseJson.errorMessageList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Request was unsucessful\", function () {\r",
+                  "    pm.expect(responseJson.success).to.be.false;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Error message indicates load failure\", function () {\r",
+                  "    var errors = responseJson.messageList;\r",
+                  "    var loadError = errors.find(error => error.indexOf(\"Unable to load invoice header for ID\") != -1);\r",
+                  "    \r",
+                  "    pm.expect(loadError, \"Did not find load error message\").to.exist;\r",
+                  "    \r",
+                  "    var pathParts = pm.request.url.getPath().split(\"/\");\r",
+                  "    var invoiceId = pathParts[pathParts.length - 1]\r",
+                  "    \r",
+                  "    pm.expect(loadError.indexOf(invoiceId), \"Did not find invoice id in error message\").to.not.equal(-1)\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "bd5e9847-d97a-46c9-a30d-e02c22845c62",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/invoice/1"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoices - Bad Request - Missing required parameters",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6a6b611e-27a6-4d71-8ba9-f7d85eeb2d38",
+                "exec": [
+                  "pm.test(\"Response time is less than 1000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Received Bad Request status code\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "\r",
+                  "var responseJson = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Proper base response structure\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.expect(responseJson.success).to.exist;\r",
+                  "    pm.expect(responseJson.messageList).to.exist;\r",
+                  "    pm.expect(responseJson.errorMessageList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Request was unsucccessful\", function () {\r",
+                  "    pm.expect(responseJson.success).to.equal(false);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Error message indicates missing required fields\", function () {\r",
+                  "    var errors = responseJson.messageList;\r",
+                  "    var requiredError = errors.find(error => error.indexOf(\"Must pass\") != -1);\r",
+                  "    \r",
+                  "    pm.expect(requiredError, \"Did not find required error message\").to.exist;\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "d232e2f4-fa02-46e0-9dda-a8933aaeb62d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/invoices",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "pageNumber",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "visibleToCustomer",
+                  "value": "true",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceProviderNumber",
+                  "value": "21197",
+                  "disabled": true
+                },
+                {
+                  "key": "customerNumber",
+                  "value": "MSI01",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceRequestNumber",
+                  "value": "1-4142078802",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invoices For SP - Successful",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "48d202da-55a8-43f2-8ac5-d300e0796581",
+                "exec": [
+                  "pm.test(\"Response time is less than 1000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Received OK status code\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "var responseJson = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Proper base response structure\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.expect(responseJson.success).to.exist;\r",
+                  "    pm.expect(responseJson.messageList).to.exist;\r",
+                  "    pm.expect(responseJson.errorMessageList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Has paging information in response\", function () {\r",
+                  "    pm.expect(responseJson.paginationData, \"Did not find pagination entry in json body\").to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalAvailableRecords).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.recordsInThisRespose).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.currentPageNumber).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.pageSize).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalPages).to.exist;\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"Request was succcessful\", function () {\r",
+                  "    pm.expect(responseJson.success).to.equal(true);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Proper invoice list response structure\", function () {\r",
+                  "    pm.expect(responseJson.invoiceList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Retrieved invoices\", function () {\r",
+                  "    pm.expect(responseJson.invoiceList.length, \"Did not get any invoices\").to.be.greaterThan(0);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "371f6de0-ebcc-4988-8b3b-a95d3009e04c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/invoices?serviceProviderNumber=21197",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "customerNumber",
+                  "value": "US206",
+                  "disabled": true
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "visibleToCustomer",
+                  "value": "true",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceProviderNumber",
+                  "value": "21197"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invoices For Customer - Successful",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5935ec7d-8878-4e6f-a41b-da5f7f73829e",
+                "exec": [
+                  "pm.test(\"Response time is less than 1000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Received OK status code\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "var responseJson = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Proper base response structure\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.expect(responseJson.success).to.exist;\r",
+                  "    pm.expect(responseJson.messageList).to.exist;\r",
+                  "    pm.expect(responseJson.errorMessageList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Has paging information in response\", function () {\r",
+                  "    pm.expect(responseJson.paginationData, \"Did not find pagination entry in json body\").to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalAvailableRecords).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.recordsInThisRespose).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.currentPageNumber).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.pageSize).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalPages).to.exist;\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"Request was succcessful\", function () {\r",
+                  "    pm.expect(responseJson.success).to.equal(true);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Proper invoice list response structure\", function () {\r",
+                  "    pm.expect(responseJson.invoiceList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Retrieved invoices\", function () {\r",
+                  "    pm.expect(responseJson.invoiceList.length, \"Did not get any invoices\").to.be.greaterThan(0);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "2d7f6c75-26e2-425a-8b51-0a590778a476",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/invoices?customerNumber=MSI01",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "pageNumber",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "visibleToCustomer",
+                  "value": "true",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceProviderNumber",
+                  "value": "21197",
+                  "disabled": true
+                },
+                {
+                  "key": "customerNumber",
+                  "value": "MSI01"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invoices For Service Request - Successful",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "320d0254-6cfd-43aa-96b3-a3759fdd15ff",
+                "exec": [
+                  "pm.test(\"Response time is less than 1000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Received OK status code\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "var responseJson = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Proper base response structure\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.expect(responseJson.success).to.exist;\r",
+                  "    pm.expect(responseJson.messageList).to.exist;\r",
+                  "    pm.expect(responseJson.errorMessageList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Has paging information in response\", function () {\r",
+                  "    pm.expect(responseJson.paginationData, \"Did not find pagination entry in json body\").to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalAvailableRecords).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.recordsInThisRespose).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.currentPageNumber).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.pageSize).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalPages).to.exist;\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"Request was succcessful\", function () {\r",
+                  "    pm.expect(responseJson.success).to.equal(true);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Proper invoice list response structure\", function () {\r",
+                  "    pm.expect(responseJson.invoiceList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Retrieved invoices\", function () {\r",
+                  "    pm.expect(responseJson.invoiceList.length, \"Did not get any invoices\").to.be.greaterThan(0);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "bf0c7f69-70a7-4b0f-b052-0e661b0d2849",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/invoices?serviceRequestNumber=1-4142078802",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "pageNumber",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "visibleToCustomer",
+                  "value": "true",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceProviderNumber",
+                  "value": "21197",
+                  "disabled": true
+                },
+                {
+                  "key": "customerNumber",
+                  "value": "MSI01",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceRequestNumber",
+                  "value": "1-4142078802"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invoices For Status - Successful",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "420f20dc-a614-46ab-b4bf-1e95947e1ee2",
+                "exec": [
+                  "pm.test(\"Response time is less than 1000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Received OK status code\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "var responseJson = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Proper base response structure\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.expect(responseJson.success).to.exist;\r",
+                  "    pm.expect(responseJson.messageList).to.exist;\r",
+                  "    pm.expect(responseJson.errorMessageList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Has paging information in response\", function () {\r",
+                  "    pm.expect(responseJson.paginationData, \"Did not find pagination entry in json body\").to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalAvailableRecords).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.recordsInThisRespose).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.currentPageNumber).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.pageSize).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalPages).to.exist;\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"Request was succcessful\", function () {\r",
+                  "    pm.expect(responseJson.success).to.equal(true);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Proper invoice list response structure\", function () {\r",
+                  "    pm.expect(responseJson.invoiceList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Retrieved invoices\", function () {\r",
+                  "    pm.expect(responseJson.invoiceList.length, \"Did not get any invoices\").to.be.greaterThan(0);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "aca4be20-fcc0-4e73-a696-ec9cba62ae54",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/invoices?status=Accepted",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "pageNumber",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceProviderNumber",
+                  "value": "21197",
+                  "disabled": true
+                },
+                {
+                  "key": "customerNumber",
+                  "value": "MSI01",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceRequestNumber",
+                  "value": "1-4142078802",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "Accepted"
+                },
+                {
+                  "key": "visibleToCustomer",
+                  "value": "true",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Payments - Successful",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7e77e5fc-c9c4-4892-9ac4-6288fb2fb0b9",
+                "exec": [
+                  "pm.test(\"Response time is less than 1000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Received OK status code\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "var responseJson = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Proper base response structure\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.expect(responseJson.success).to.exist;\r",
+                  "    pm.expect(responseJson.messageList).to.exist;\r",
+                  "    pm.expect(responseJson.errorMessageList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Has paging information in response\", function () {\r",
+                  "    pm.expect(responseJson.paginationData, \"Did not find pagination entry in json body\").to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalAvailableRecords).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.recordsInThisRespose).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.currentPageNumber).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.pageSize).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalPages).to.exist;\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"Request was succcessful\", function () {\r",
+                  "    pm.expect(responseJson.success).to.equal(true);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Proper payment list response structure\", function () {\r",
+                  "    pm.expect(responseJson.payments).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Retrieved payments\", function () {\r",
+                  "    pm.expect(responseJson.payments.length, \"Did not get any payments\").to.be.greaterThan(0);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "_postman_id": "51095093-4686-462b-9ad5-d2c77f13b22f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/payments?startDate=2021-03-16&endDate=2021-12-15&serviceProviderNumbers=63468,21197",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2021-03-16"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2021-12-15"
+                },
+                {
+                  "key": "serviceProviderNumbers",
+                  "value": "63468,21197"
+                },
+                {
+                  "key": "orderByFieldName",
+                  "value": "status",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "5e238728-82d8-4950-98b7-a3ab2179359a"
+    },
+    {
+      "name": "Test",
+      "item": [
+        {
+          "name": "Invoice",
+          "_postman_id": "1ede766d-744a-4b9d-bad5-3d3afec6c995",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"status\": \"ReviewByAP\",\n\t\"updatedByUserId\": \"mtadkowski\"\n}"
+            },
+            "url": "{{Test|Gateway}}/invoice/106090312"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice Audit",
+          "_postman_id": "ce0aab2d-3e59-429b-b25c-731c7f3735c3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/invoice/793412120/audit"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice Action",
+          "_postman_id": "c3cb4a28-e4d6-4d1b-bfaf-f6759a78fe7f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"actor\": \"ServiceProvider\",\n\t\"selectedAction\": \"Submit\"\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{Test|Gateway}}/invoice/789718975"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoices",
+          "_postman_id": "49364b04-7f60-42f3-a8e7-c99f499f147c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/invoices?pageNumber=1&serviceProviderNumber=21197",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "customerNumber",
+                  "value": "US206",
+                  "disabled": true
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "1"
+                },
+                {
+                  "key": "visibleToCustomer",
+                  "value": "true",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceProviderNumber",
+                  "value": "21197"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice",
+          "_postman_id": "d236dbd9-17a7-4efa-b59c-1c721e4d71e6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/invoice/5"
+          },
+          "response": []
+        },
+        {
+          "name": "Payments",
+          "_postman_id": "0c9c1cea-f87b-42cd-83cc-f75b644d1059",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/payments?startDate=2021-03-16&endDate=2021-12-15&serviceProviderNumbers=63468,21197",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "payments"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2021-03-16"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2021-12-15"
+                },
+                {
+                  "key": "serviceProviderNumbers",
+                  "value": "63468,21197"
+                },
+                {
+                  "key": "orderByFieldName",
+                  "value": "status",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Export Payments",
+          "_postman_id": "369842a1-3ca8-41c5-8d5c-4f7395283fc9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              },
+              {
+                "key": "",
+                "value": "",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/payments/export?startDate=2020-01-01&endDate=2021-12-28&serviceProviderNumbers=63468,21197,43287,PRB_VENDING_US,F4614781,66091",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "payments",
+                "export"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2020-01-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2021-12-28"
+                },
+                {
+                  "key": "serviceProviderNumbers",
+                  "value": "63468,21197,43287,PRB_VENDING_US,F4614781,66091"
+                },
+                {
+                  "key": "orderByFieldName",
+                  "value": "status",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Payment Items",
+          "_postman_id": "fdcfa46b-d2a0-4b45-b7ab-8f7301780507",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/payment/items?startDate=2021-03-09&endDate=2021-03-15&serviceProviderNumbers=63468&status=pending",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "payment",
+                "items"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2021-03-09"
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "2021-03-15"
+                },
+                {
+                  "key": "serviceProviderNumbers",
+                  "value": "63468"
+                },
+                {
+                  "key": "status",
+                  "value": "pending",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Payment Items Export",
+          "_postman_id": "c226de22-3221-46a8-8c02-3b85e96f3a3c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/payment/items/export?startDate=2021-03-09&endDate=2021-03-15&serviceProviderNumbers=63468&status=pending",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "payment",
+                "items",
+                "export"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2021-03-09"
+                },
+                {
+                  "key": "pageNumber",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "2021-03-15"
+                },
+                {
+                  "key": "serviceProviderNumbers",
+                  "value": "63468"
+                },
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Payment",
+          "_postman_id": "28a6d161-be0d-4c21-afda-1d7ac7274089",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/payment?startDate=2021-03-23&endDate=2021-03-29&serviceProviderNumber=21197&status=FORECASTED",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "payment"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2021-03-23"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2021-03-29"
+                },
+                {
+                  "key": "serviceProviderNumber",
+                  "value": "21197"
+                },
+                {
+                  "key": "status",
+                  "value": "FORECASTED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice Attachment",
+          "_postman_id": "3f824504-73a0-4753-8c30-cb7fc8711038",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"displayName\": \"1-4039251552_07152019_125450.PDF\",\r\n    \"cloudStorageId\": \"1320768329080297951-4039251552_07152019_125459.PDF\",\r\n    \"cloudStorageContainerName\": \"biz-myfsn-attachments-invoice-test\",\r\n    \"visibleToCustomer\": true\r\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{Test|Gateway}}/invoice/789718944/attachment"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice Attachments",
+          "_postman_id": "7ab97cab-0d62-493b-9e2f-a955951f84b0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/invoice/789718944/attachments"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice Line Items",
+          "_postman_id": "4fe3bfa6-5158-498f-8caf-5a9775efe117",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "value": "{{Test|Gateway|Token}}",
+                "type": "text"
+              },
+              {
+                "key": "Origin",
+                "value": "http://localhost:3000",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": "{{Test|Gateway}}/invoice/106090286/lineitems"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice Notes",
+          "_postman_id": "fc80c98b-e09d-4175-8ae0-94ffca151d7d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/invoice/106087703/notes"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice Statuses",
+          "_postman_id": "afe11fdd-5524-483b-aa24-eac1fd8205b4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/invoicestatuses"
+          },
+          "response": []
+        },
+        {
+          "name": "Invoice Submission",
+          "_postman_id": "948f003f-eaf6-48a0-a38d-3faa926e3ff4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"sourceSystemName\": \"postman\",\n\t\"serviceRequestNumber\": \"1-2934342222\",\n\t\"serviceProviderNumber\": \"21197\",\n\t\"createdByUserId\": \"mtadkowski\",\n\t\"serviceProviderInvoiceNumber\": \"inv12345\",\n\t\"lineItemList\" : [\n\t\t{\n\t\t\t\"typeName\": \"Labor\",\n\t\t\t\"typeCode\": \"L\",\n\t\t\t\"description\": \"TECHNICIAN LABOR\",\n\t\t\t\"serviceProviderPricingDetail\": {\n\t\t\t\t\"quantity\": 2.5,\n\t\t\t\t\"unitPrice\": 65.25\n\t\t\t},\n\t\t\t\"assetId\": 12345,\n\t\t\t\"capsFailureNote\": \"I want to charge this much!!!\",\n\t\t\t\"sourceSystemItemId\": 1\n\t\t}\n\t],\n\t\"noteList\": [\n\t\t{\n\t\t\t\"text\": \"this is a SP entered note\",\n\t\t\t\"type\": \"SP Entered\",\n\t\t\t\"isVisibleToCustomer\": false,\n\t\t\t\"isVisibleToServiceProvider\": true\n\t\t}\n\t]\n}"
+            },
+            "url": "{{Test|Gateway}}/invoicesubmission"
+          },
+          "response": []
+        },
+        {
+          "name": "Labor Types",
+          "_postman_id": "c5ee7f19-5a40-4158-bb5b-4334a30e29bf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/labortypes"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote",
+          "_postman_id": "635df661-24f2-4522-903f-4f7458f5b4e6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"actor\": \"AccountTeam\",\n\t\"selectedAction\": \"Send to Customer\",\n\t\"selectedReason\": \"Price\",\n\t\"sourceSystemName\": \"VixxoLink\",\n\t\"userEnteredNote\": \"set quote to Customer Review state\",\n\t\"userName\": \"specflow\"\n}"
+            },
+            "url": "{{Test|Gateway}}/quote/904610"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote",
+          "_postman_id": "416bda9d-4b1c-4a9d-a262-c110093f4e57",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"createdByUsername\":\"2119701\",\r\n\t\"customerNumber\":\"RAZ01\",\r\n\t\"customerSiteNumber\":\"1230\",\r\n\t\"customerSiteSiebelId\":\"1-HWRPT9\",\r\n\t\"customerTotalAmount\":0.0,\r\n\t\"quoteId\":0,\r\n\t\"serviceProviderNumber\":\"21197\",\r\n\t\"serviceProviderTotalAmount\":0.0,\r\n\t\"serviceRequestNumber\":\"1-4040563282\",\r\n\t\"sourceSystemCorrelationId\":0,\r\n\t\"sourceSystemName\":\"VixxoLink\",\r\n\t\"submissionName\":\"Repair\"\r\n}"
+            },
+            "url": "{{Test|Gateway}}/quote"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote",
+          "_postman_id": "b1dd49c5-c118-4757-8646-8964fcf82d9d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/quote/3991380"
+          },
+          "response": []
+        },
+        {
+          "name": "Quotes",
+          "_postman_id": "fef7dde8-67b9-4221-b525-e6b6903aa1ba",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/quotes?serviceRequestNumber=1-4091216662&visibleToServiceProvider=false",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "quotes"
+              ],
+              "query": [
+                {
+                  "key": "serviceRequestNumber",
+                  "value": "1-4091216662"
+                },
+                {
+                  "key": "visibleToServiceProvider",
+                  "value": "false",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Actions",
+          "_postman_id": "499a5649-cfe5-4aef-9789-3ba9b3b10aa0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/quote/actions?actor=AccountTeam",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "quote",
+                "actions"
+              ],
+              "query": [
+                {
+                  "key": "actor",
+                  "value": "AccountTeam"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Decison",
+          "_postman_id": "26941130-4456-407c-a222-49983fff99b5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/quote/1970427"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Attachment",
+          "_postman_id": "222fda87-a281-4143-8378-64d53ecb77a7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"displayName\": \"1-4039251552_07152019_125450.PDF\",\r\n    \"cloudStorageId\": \"1320768329080297951-4039251552_07152019_125459.PDF\",\r\n    \"cloudStorageContainerName\": \"biz-myfsn-attachments-invoice-test\",\r\n    \"visibleToCustomer\": true\r\n}"
+            },
+            "url": "{{Test|Gateway}}/quote/1968975/attachment"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Attachments",
+          "_postman_id": "0d0dca4a-2289-4090-81d9-52fec51708ba",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/quote/1968975/attachments"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Line Item",
+          "_postman_id": "e42be7e2-f154-4d27-96cd-2e345eb5e309",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/quote/904069/lineitem/4158423"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Line Item",
+          "_postman_id": "ffcb6a3d-751d-41f5-ad49-de8208edc3ae",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\t\"lineItemId\": 12052794,\r\n\t\"parentId\": 1968858,\r\n\t\"typeName\": \"Processing Fee\",\r\n\t\"typeCode\": \"G\",\r\n\t\"description\": \"Processing Fee\",\r\n\t\"actionProduct\": false,\r\n\r\n\r\n\t\"lastUpdatedDate\": \"2019-06-28T00:00:00-04:00\",\r\n\t\"lastUpdatedByUsername\": \"1-8FAR1\",\r\n\t\"assetId\": null,\r\n\t\"capsFailureNote\": null,\r\n\t\"sourceSystemItemId\": null,\r\n\t\"incurredOrProposed\":\"M\",\r\n\t\"createdDate\": null,\r\n\t\"createdByUsername\": null,\r\n\t\"sourceSystemName\": null,\r\n\t\"taxDetailList\": []\r\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": "{{Test|Gateway}}/quote/3993204/lineItem"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Line Items",
+          "_postman_id": "5131d1c6-4990-462e-920e-29d6cbb2150a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/quote/3990951/lineitems"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Notes",
+          "_postman_id": "f588ce60-0a4b-4b8f-b6d1-3c81ae879230",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/quote/904088/notes"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Statuses",
+          "_postman_id": "b6c19b2d-82e0-4ac2-8973-739b00f423c3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/quotestatuses"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Types",
+          "_postman_id": "872a1730-9a32-40f2-a723-94aa6c5d6efe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Test|Gateway}}/quotetypes"
+          },
+          "response": []
+        },
+        {
+          "name": "Quote Submission",
+          "_postman_id": "0a8ccc5b-6095-4ffa-9a3b-fce0e90c8dab",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"sourceSystemName\": \"postman\",\n\t\"serviceRequestNumber\": \"1-2934342222\",\n\t\"serviceProviderNumber\": \"21197\",\n\t\"createdByUserId\": \"mtadkowski\",\n\t\"lineItemList\" : [\n\t\t{\n\t\t\t\"typeName\": \"Labor\",\n\t\t\t\"typeCode\": \"L\",\n\t\t\t\"description\": \"TECHNICIAN LABOR\",\n\t\t\t\"serviceProviderPricingDetail\": {\n\t\t\t\t\"quantity\": 2.5,\n\t\t\t\t\"unitPrice\": 65.25\n\t\t\t},\n\t\t\t\"assetId\": 12345,\n\t\t\t\"capsFailureNote\": \"I want to charge this much!!!\",\n\t\t\t\"sourceSystemItemId\": 1\n\t\t}\n\t],\n\t\"noteList\": [\n\t\t{\n\t\t\t\"text\": \"this is a SP entered note\",\n\t\t\t\"type\": \"Work Description\",\n\t\t\t\"isVisibleToCustomer\": false,\n\t\t\t\"isVisibleToServiceProvider\": true\n\t\t}\n\t]\n}"
+            },
+            "url": "{{Test|Gateway}}/quotesubmission"
+          },
+          "response": []
+        },
+        {
+          "name": "Service Provider Labor Types",
+          "_postman_id": "f146ef95-ff7c-4699-aad8-daf544d0af88",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/serviceprovider/labortypes?serviceRequestNumber=1-4139914972",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "serviceprovider",
+                "labortypes"
+              ],
+              "query": [
+                {
+                  "key": "serviceRequestNumber",
+                  "value": "1-4139914972"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Azure get SR with matt",
+          "_postman_id": "18fd1eca-fa55-48b1-85bb-91c3595b8c5e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "https://gatewaytest.vixxo.com/api/sr/tn/1-4066601702"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "3d0dbb14-07cb-44d7-9c5a-99edaaf8b99c"
+    },
+    {
+      "name": "Staging",
+      "item": [
+        {
+          "name": "Invoice",
+          "_postman_id": "182fa74e-d407-424f-80d1-74885585ef1e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Staging|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{Staging|Gateway}}/invoice/5"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Invoices",
+          "_postman_id": "db673ced-dacc-4616-900a-5b9cee5d479e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Staging|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Staging|Gateway}}/invoices?serviceRequestNumber=1-4274738882&serviceProviderNumber=VIXXO-SP04",
+              "host": [
+                "{{Staging|Gateway}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "serviceRequestNumber",
+                  "value": "1-4274738882"
+                },
+                {
+                  "key": "serviceProviderNumber",
+                  "value": "VIXXO-SP04"
+                },
+                {
+                  "key": "visibleToCustomer",
+                  "value": "true",
+                  "disabled": true
+                },
+                {
+                  "key": "visibleToServiceProvider",
+                  "value": "false",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Service Provider Labor Types",
+          "_postman_id": "a85d9fc9-0d2e-4cae-a151-04d8f94c7079",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Staging|Gateway}}/serviceprovider/labortypes?serviceRequestNumber=1-4267610352&includeZeroDollarItems=false&includeTimingData=false",
+              "host": [
+                "{{Staging|Gateway}}"
+              ],
+              "path": [
+                "serviceprovider",
+                "labortypes"
+              ],
+              "query": [
+                {
+                  "key": "serviceRequestNumber",
+                  "value": "1-4267610352"
+                },
+                {
+                  "key": "includeZeroDollarItems",
+                  "value": "false"
+                },
+                {
+                  "key": "includeTimingData",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "5ec62525-fd16-440d-b706-ebbcad4104cf"
+    },
+    {
+      "name": "Production",
+      "item": [
+        {
+          "name": "Service Provider Labor Types",
+          "_postman_id": "6eb0c4cf-73d4-420a-9d6a-7f4d9e4eaf9f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://secureapi.vixxo.com/vixxolink/v2/serviceprovider/labortypes?serviceRequestNumber=1-4267610352&includeZeroDollarItems=false&includeTimingData=false",
+              "protocol": "https",
+              "host": [
+                "secureapi",
+                "vixxo",
+                "com"
+              ],
+              "path": [
+                "vixxolink",
+                "v2",
+                "serviceprovider",
+                "labortypes"
+              ],
+              "query": [
+                {
+                  "key": "serviceRequestNumber",
+                  "value": "1-4267610352"
+                },
+                {
+                  "key": "includeZeroDollarItems",
+                  "value": "false"
+                },
+                {
+                  "key": "includeTimingData",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Service Requests Search",
+          "_postman_id": "5ad97511-a96f-43b5-a7ac-053a1a8adedd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://secureapi.vixxo.com/vixxolink/v2/servicerequest?serviceRequestNumber=1-4823531482",
+              "protocol": "https",
+              "host": [
+                "secureapi",
+                "vixxo",
+                "com"
+              ],
+              "path": [
+                "vixxolink",
+                "v2",
+                "servicerequest"
+              ],
+              "query": [
+                {
+                  "key": "serviceRequestNumber",
+                  "value": "1-4823531482"
+                },
+                {
+                  "key": "visibleToServiceProvider",
+                  "value": "true",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Quotes Copy",
+          "_postman_id": "1aca1374-149c-481b-bd99-d9ac9ed110af",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://secureapi.vixxo.com/vixxolink/v2/quotes?serviceRequestNumber=1-4753816462",
+              "protocol": "https",
+              "host": [
+                "secureapi",
+                "vixxo",
+                "com"
+              ],
+              "path": [
+                "vixxolink",
+                "v2",
+                "quotes"
+              ],
+              "query": [
+                {
+                  "key": "serviceRequestNumber",
+                  "value": "1-4753816462"
+                },
+                {
+                  "key": "visibleToServiceProvider",
+                  "value": "true",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Products",
+          "_postman_id": "80cde492-1387-4e9a-b2a1-cb20b380fcfe",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://secureapi.vixxo.com/vixxolink/v2/products?keywords=\"metal\"",
+              "protocol": "https",
+              "host": [
+                "secureapi",
+                "vixxo",
+                "com"
+              ],
+              "path": [
+                "vixxolink",
+                "v2",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "visibleToServiceProvider",
+                  "value": "true",
+                  "disabled": true
+                },
+                {
+                  "key": "keywords",
+                  "value": "\"metal\""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Products Copy",
+          "_postman_id": "8fb559b3-3a66-4d88-b4d8-d99ba6c90114",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "https://secureapi.vixxo.com/vixxolink/v2/product/1-9YURE/caps?customerNumber=MSI01&unitPrice=1",
+              "protocol": "https",
+              "host": [
+                "secureapi",
+                "vixxo",
+                "com"
+              ],
+              "path": [
+                "vixxolink",
+                "v2",
+                "product",
+                "1-9YURE",
+                "caps"
+              ],
+              "query": [
+                {
+                  "key": "visibleToServiceProvider",
+                  "value": "true",
+                  "disabled": true
+                },
+                {
+                  "key": "customerNumber",
+                  "value": "MSI01"
+                },
+                {
+                  "key": "unitPrice",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "2e7e4dd2-e248-4a40-8811-9f0d79de2189"
+    }
+  ]
+}
