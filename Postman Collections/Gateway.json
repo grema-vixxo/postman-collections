@@ -1015,7 +1015,7 @@
               }
             ],
             "url": {
-              "raw": "{{Test|Gateway}}/payments?startDate=2021-03-16&endDate=2021-12-15&serviceProviderNumbers=63468,21197",
+              "raw": "{{Test|Gateway}}/payments?startDate=2021-04-06&endDate=2022-04-06&serviceProviderNumbers=63468,21197",
               "host": [
                 "{{Test|Gateway}}"
               ],
@@ -1025,11 +1025,11 @@
               "query": [
                 {
                   "key": "startDate",
-                  "value": "2021-03-16"
+                  "value": "2021-04-06"
                 },
                 {
                   "key": "endDate",
-                  "value": "2021-12-15"
+                  "value": "2022-04-06"
                 },
                 {
                   "key": "serviceProviderNumbers",
