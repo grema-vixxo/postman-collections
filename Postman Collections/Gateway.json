@@ -6,6 +6,11 @@
   },
   "item": [
     {
+      "name": "Integration Tests",
+      "item": [],
+      "id": "5e238728-82d8-4950-98b7-a3ab2179359a"
+    },
+    {
       "name": "Test",
       "item": [
         {
