@@ -9,6 +9,112 @@
       "name": "Integration Tests",
       "item": [
         {
+          "name": "Invoices For Customer - Successful",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5935ec7d-8878-4e6f-a41b-da5f7f73829e",
+                "exec": [
+                  "pm.test(\"Response time is less than 1000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Received OK status code\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "var responseJson = pm.response.json();\r",
+                  "\r",
+                  "pm.test(\"Proper base response structure\", function () {\r",
+                  "    pm.response.to.be.withBody;\r",
+                  "    pm.expect(responseJson.success).to.exist;\r",
+                  "    pm.expect(responseJson.messageList).to.exist;\r",
+                  "    pm.expect(responseJson.errorMessageList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Has paging information in response\", function () {\r",
+                  "    pm.expect(responseJson.paginationData, \"Did not find pagination entry in json body\").to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalAvailableRecords).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.recordsInThisRespose).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.currentPageNumber).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.pageSize).to.exist;\r",
+                  "    pm.expect(responseJson.paginationData.totalPages).to.exist;\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"Request was succcessful\", function () {\r",
+                  "    pm.expect(responseJson.success).to.equal(true);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Proper invoice list response structure\", function () {\r",
+                  "    pm.expect(responseJson.invoiceList).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Retrieved invoices\", function () {\r",
+                  "    pm.expect(responseJson.invoiceList.length, \"Did not get any invoices\").to.be.greaterThan(0);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "2d7f6c75-26e2-425a-8b51-0a590778a476",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "type": "text",
+                "value": "{{Test|Gateway|Token}}"
+              },
+              {
+                "key": "Origin",
+                "type": "text",
+                "value": "http://localhost:3000"
+              },
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{Test|Gateway}}/invoices?customerNumber=MSI01",
+              "host": [
+                "{{Test|Gateway}}"
+              ],
+              "path": [
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "pageNumber",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "visibleToCustomer",
+                  "value": "true",
+                  "disabled": true
+                },
+                {
+                  "key": "serviceProviderNumber",
+                  "value": "21197",
+                  "disabled": true
+                },
+                {
+                  "key": "customerNumber",
+                  "value": "MSI01"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Invoices For Service Request - Successful",
           "event": [
             {
