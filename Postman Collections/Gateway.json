@@ -584,6 +584,35 @@
           "response": []
         },
         {
+          "name": "Invoice Line Items Copy",
+          "id": "568c9bdb-9cd8-460c-9c5a-a0c1010a02bd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "USER_TOKEN",
+                "value": "{{Test|Gateway|Token}}",
+                "type": "text"
+              },
+              {
+                "key": "Origin",
+                "value": "http://localhost:3000",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": "{{Test|Gateway}}/invoice/106090286/lineitems"
+          },
+          "response": []
+        },
+        {
           "name": "Invoice Notes",
           "id": "fc80c98b-e09d-4175-8ae0-94ffca151d7d",
           "protocolProfileBehavior": {
@@ -1246,35 +1275,6 @@
             "method": "GET",
             "header": [],
             "url": "https://gatewaytest.vixxo.com/api/sr/tn/1-4066601702"
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice Line Items Copy",
-          "id": "568c9bdb-9cd8-460c-9c5a-a0c1010a02bd",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "value": "{{Test|Gateway|Token}}",
-                "type": "text"
-              },
-              {
-                "key": "Origin",
-                "value": "http://localhost:3000",
-                "type": "text"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": "{{Test|Gateway}}/invoice/106090286/lineitems"
           },
           "response": []
         }
