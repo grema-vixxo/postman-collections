@@ -185,7 +185,7 @@
                 "value": "application/json"
               }
             ],
-            "url": "{{Test|Gateway}}/invoice/5"
+            "url": "{{Test|Gateway}}/invoice/689262762"
           },
           "response": []
         },
@@ -873,7 +873,120 @@
               ]
             }
           },
-          "response": []
+          "response": [
+            {
+              "id": "11ee04f4-2fc5-41b7-b341-88cd36b1398e",
+              "name": "Quotes",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "USER_TOKEN",
+                    "type": "text",
+                    "value": "{{Test|Gateway|Token}}"
+                  },
+                  {
+                    "key": "Origin",
+                    "type": "text",
+                    "value": "http://localhost:3000"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{Test|Gateway}}/quotes/export?customerNumber=Raz01",
+                  "host": [
+                    "{{Test|Gateway}}"
+                  ],
+                  "path": [
+                    "quotes",
+                    "export"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerNumber",
+                      "value": "Raz01"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "xml",
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "nginx/1.15.10"
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 27 Aug 2021 16:06:55 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Access-Control-Allow-Credentials",
+                  "value": "true"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "public"
+                },
+                {
+                  "key": "Content-Transfer-Encoding",
+                  "value": "binary"
+                },
+                {
+                  "key": "Content-disposition",
+                  "value": "attachment; filename=\"Quote.xlsx\""
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "1; mode=block"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "PUT, GET, POST, OPTIONS, DELETE, PATCH, HEAD"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,Accept,Auth-DeviceID,Auth-DeviceKey,Content-Type,Origin,USER_TOKEN,GROUP_ID_LIST,USER_ROLE,Ocp-Apim-Subscription-Key"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15724800; includeSubDomains"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000b\u0000\u0000\u0000_rels/.rels���j�0\f��}\n�{㴃1F�^Ơ�2�\u0007�l%1I,c�[��3�l\u000b\rl�����\u001fH��4\u000e�R�\u001c\fl�\u001a\u0014\u0005�·����q}\u0007*\u000b\u0006�\u0003\u00072\u0010\u0018\u000e���\u0006���;\u001f�*��\rt\"�^�l;\u001a1W\u001c)�N�iD)ejuD�cKz[׷:}g�\f���@:�\r�3����4�7N�\u000bs_\u0015ni�G�M*7�����2R�+�\t�\u000b2�/\u0019�����b��mC�Pp�ֱ$P\u0012OyQ�抒�DsZ��\u001eIС�'un���~�\u0001PK\u0007\b��\u0016��\u0000\u0000\u0000O\u0002\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0013\u0000\u0000\u0000[Content_Types].xml�SMO\u00021\u0010��+6��m��1���\u001fG%\u0011��β\r�J[\u0010���\u0005MDL0�S;yo�{3i�Ӎ5�\u001ac��5lć�B'��nѰ��S}˪��)0�aÜg��`<�\u0006L\u0015��԰.�p'D�\u001dZH�\u0007t��>Z�Tƅ\b ��@q=\u001c�\b�]F��\\4\u0018�=`\u000b+���\u001dP�\u001b\u0006!\u0018-!S.�v�@��+��N�tE\u0004V=nHe7\u000f���S,\u000e;K]\u001a_h7Q+�W8߶Z��re��c�U��\u0010�\u0018��}�\u0019��\f�\u0004\u0005�g�&A��,��H\u001f�$�B<��`�\u0014\"�J\u001db���\u000e\"��\u001c�I�N�1�\u0007�A��\u001c�CI�#\u0017�\u0001�܂v��?|\\�{��`�b������$�c�\u001dD��|2�\u0004PK\u0007\bKB\u0017�>\u0001\u0000\u0000'\u0004\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0010\u0000\u0000\u0000docProps/app.xmlM��\n�0\u0010D�~EȽ��ADҔ�\b��A? ��6�lB�J?ߜ���0���ͯ�)�@��׍\u0014H6���V>\u001f��$;�SC\n\u0011\u0013;̢\u001c(�ra�g�l\u0017�&�e��L!y�%�\u0019�49��`_\u001e���4G���F\u001c��\u0005J��\u0018Wg\r\u0017\u0007�GS�b��\u0014��\n~\u000e�\u0003PK\u0007\b�|wؑ\u0000\u0000\u0000�\u0000\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0011\u0000\u0000\u0000docProps/core.xmlm��J�0\u0010F��)B�ۤ]�.��\"ʂ��`eŻ��m��!�v}{ӺVP/g��a�+w'5�wp�7��YJ1\u0002-��u[��f�l1�k�\u0007�����]�*�e�888c��\u001e<�\u001e홰\u0015�B��\u0010/:Pܧ��q�b��!��%��W�\u0002�)-���%\u000f�L��.F|VJ�(�\u001bf�\u0014\u0004\u0006P��'Y��\u001f6�S�߅y��'�/�8�鸞�xQF��n\u001f��^O�\u000b��峛\t\u0007<�D����|O���f���YB�I~�d\u0005�\u0005�l�K�k6~\u0015�՗1�\u000e���f\u0002���$��W�PK\u0007\b�\u0017y_\n\u0001\u0000\u0000�\u0001\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0014\u0000\u0000\u0000xl/sharedStrings.xmlu�Q\u000b�0\u0014���\u0015c�9�\"��� �$�?@t�m���o\u0011�`�rᜏ{�����.z�F\u0007x��\u0018\t]�Z�&�\u0005�MW8d\u0013\n`Qe\u0006m\u0003��h��6��G�\f\r\u0001n��ք@�\nU�g:�\u001d��^��ɾ!�����\u0015ª+�����Rj�(HF-;\u0017)OЩ8n��\u0012�(y�o�S\u001e\u001d��{!�\u0011/�1�fIē\u0018�n�Y���rH�r���N�}�=\u0001PK\u0007\b�\r�y�\u0000\u0000\u0000>\u0001\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\r\u0000\u0000\u0000xl/styles.xml��=O�0\u0010�w~�坺�*T�$\u001d��XXZ$V7�$\u0016���T\t�\u001e;N� \u0006\u0004��w��}|�%ٮ�\u0002��:�U�W�%F�*͸jr�r(o�xW�d�\u000f\u0002�-�G��\\�[��=!�jAR��\u0006Tة��ԇ�6�\u0019\u000b��h�����;\")W��T'K�\u001d�t�|���\u0014Y��UY�$\u0014�{G'*�\u0012[\u000be�\u0016�\"�\u0018��r����\u0012R�\u0003\u0015�h�ȣ��!��(��Nu�+m�H�)�₉\u000bqib��Pd�z\u000fV�!AS|\u0018\f�Xi\u0005\t3�}Sͨ}{�t�9�%\u001c|Ԗ�!�\"\u0013P�`��i��!q�{-C�8m��\"\"ώ)\b�\n���ѽ֟�}��\f�X|~\u0014�\u000eCCS�0)��9-�g�ͯ���/�O�͏܈\u001a#��N\u001e���'�co;��]�\u0013��dz�\u0010]��\u0003PK\u0007\b����i\u0001\u0000\u0000�\u0003\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000f\u0000\u0000\u0000xl/workbook.xml���N�0\u0010D�|��wj\u0007\u0010�(N/U��@*�]{�X��h�m�|�T\u0001���Ѽ}�f�\u0015\u0006qAb���j�@`���x���޿���k��N��N���5�9���l{\f�Wi�X�.Q0�D:J\u001e\t��\u001e1�A>(�,��\u0011n����H]�-n�=\u0007��&!\u001cL.c��#C��썄3\u0019�W���3\u0003#ȶ��O�W�\u0005�(����{sР&N�\u0001���+�\t����2���;\r�s� �zWb5\u000b�+���~\u0003PK\u0007\bs����\u0000\u0000\u0000\\\u0001\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001a\u0000\u0000\u0000xl/_rels/workbook.xml.rels��Mk\u00021\u0010@���0�nv-�R�^���\u001f0$����$dƯo��R�\u0007OC\u0018�ރ�-�������@Sՠ(����\u0019�ܼ?��b��p��\f�\b��d�A\u0003J�¾O�\n#�\u0001/�޴f�iD�b�P6m�#Jy�N'�[�HO��E�k\u0006����3�W�\u0001��ܑ\u0018`���Zri㪐���?�ض��e�������7p�wj�W5r\u001a��\u0019\u0017�]���\u0010�=�|���<:�[p��7\u0017�O�PK\u0007\b��4��\u0000\u0000\u00009\u0002\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0018\u0000\u0000\u0000xl/worksheets/sheet1.xmle�OO�0\f��|�(w�nc\u0003��\u00130\u0006\u001c�\u0010��Y�њ�J����S�)\u00157?�l=?'��G��\u0000�+k2>�$��)l�L�����\r_�\u0017io��7\u0000Ȩ���7�ݭ\u0010�h@K?�\u001d\u0018\"�uZ\"IW\u000b�9��0�[1K���R\u0019����`�!sPe�n�E�\u000e��\nz\u001f�,�n��\u0005�Rf��C���\u0016\n\u0004���\u0010�ſ�Ͱʛc%Tr���A�\rR�\u0005�\n<Y�%�\n    <u�g�\bmW��vb��I\u001f�$\u0015\u0007�(��>f�1{��l��1���c̮�l\u0013�Ř=�lyf���\u0017��5�JW+���\"ZMǜ\\/8��EpA�9k��΢�\n�.����\u001amw�\r�?���\u0017PK\u0007\b���\u00041\u0001\u0000\u0000L\u0002\u0000\u0000PK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS��\u0016��\u0000\u0000\u0000O\u0002\u0000\u0000\u000b\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000_rels/.relsPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bSKB\u0017�>\u0001\u0000\u0000'\u0004\u0000\u0000\u0013\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001f\u0001\u0000\u0000[Content_Types].xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS�|wؑ\u0000\u0000\u0000�\u0000\u0000\u0000\u0010\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0002\u0000\u0000docProps/app.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS�\u0017y_\n\u0001\u0000\u0000�\u0001\u0000\u0000\u0011\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000m\u0003\u0000\u0000docProps/core.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS�\r�y�\u0000\u0000\u0000>\u0001\u0000\u0000\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0004\u0000\u0000xl/sharedStrings.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS����i\u0001\u0000\u0000�\u0003\u0000\u0000\r\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0005\u0000\u0000xl/styles.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bSs����\u0000\u0000\u0000\\\u0001\u0000\u0000\u000f\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\\\u0007\u0000\u0000xl/workbook.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS��4��\u0000\u0000\u00009\u0002\u0000\u0000\u001a\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000r\b\u0000\u0000xl/_rels/workbook.xml.relsPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS���\u00041\u0001\u0000\u0000L\u0002\u0000\u0000\u0018\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\t\u0000\u0000xl/worksheets/sheet1.xmlPK\u0005\u0006\u0000\u0000\u0000\u0000\t\u0000\t\u0000?\u0002\u0000\u0000\b\u000b\u0000\u0000\u0000\u0000"
+            }
+          ]
         },
         {
           "name": "Quote Actions",
