@@ -205,7 +205,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{Test|Gateway}}/payments?startDate=1907-01-01&endDate=1907-01-08&serviceProviderNumbers=63468&status=Forecasted",
+							"raw": "{{Test|Gateway}}/payments?startDate=2022-05-06&endDate=2022-08-12&serviceProviderNumbers=63468&orderByFieldName=overalldate&pageSize=100&pageNumber=1",
 							"host": [
 								"{{Test|Gateway}}"
 							],
@@ -215,19 +215,27 @@
 							"query": [
 								{
 									"key": "startDate",
-									"value": "1907-01-01"
+									"value": "2022-05-06"
 								},
 								{
 									"key": "endDate",
-									"value": "1907-01-08"
+									"value": "2022-08-12"
 								},
 								{
 									"key": "serviceProviderNumbers",
 									"value": "63468"
 								},
 								{
-									"key": "status",
-									"value": "Forecasted"
+									"key": "orderByFieldName",
+									"value": "overalldate"
+								},
+								{
+									"key": "pageSize",
+									"value": "100"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1"
 								}
 							]
 						}
