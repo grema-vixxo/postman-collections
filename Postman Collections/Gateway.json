@@ -1,1824 +1,1808 @@
 {
-  "info": {
-    "_postman_id": "0369d2aa-efb4-49eb-9e9a-3512695cb7ac",
-    "name": "Gateway",
-    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Test",
-      "item": [
-        {
-          "name": "Invoice",
-          "id": "1ede766d-744a-4b9d-bad5-3d3afec6c995",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"status\": \"ReviewByAP\",\n\t\"updatedByUserId\": \"mtadkowski\"\n}"
-            },
-            "url": "{{Test|Gateway}}/invoice/106090312"
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice Audit",
-          "id": "ce0aab2d-3e59-429b-b25c-731c7f3735c3",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/invoice/793412120/audit"
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice Action",
-          "id": "c3cb4a28-e4d6-4d1b-bfaf-f6759a78fe7f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"actor\": \"ServiceProvider\",\n\t\"selectedAction\": \"Submit\"\n}"
-            },
-            "url": "{{Test|Gateway}}/invoice/789718975"
-          },
-          "response": []
-        },
-        {
-          "name": "Invoices",
-          "id": "49364b04-7f60-42f3-a8e7-c99f499f147c",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{Test|Gateway}}/invoices?pageNumber=1&serviceProviderNumber=21197",
-              "host": [
-                "{{Test|Gateway}}"
-              ],
-              "path": [
-                "invoices"
-              ],
-              "query": [
-                {
-                  "key": "customerNumber",
-                  "value": "US206",
-                  "disabled": true
-                },
-                {
-                  "key": "pageNumber",
-                  "value": "1"
-                },
-                {
-                  "key": "visibleToCustomer",
-                  "value": "true",
-                  "disabled": true
-                },
-                {
-                  "key": "serviceProviderNumber",
-                  "value": "21197"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice",
-          "id": "d236dbd9-17a7-4efa-b59c-1c721e4d71e6",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/invoice/689262762"
-          },
-          "response": []
-        },
-        {
-          "name": "Payments",
-          "id": "0c9c1cea-f87b-42cd-83cc-f75b644d1059",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{Test|Gateway}}/payments?startDate=1907-01-01&endDate=1907-01-08&serviceProviderNumbers=63468&status=Forecasted",
-              "host": [
-                "{{Test|Gateway}}"
-              ],
-              "path": [
-                "payments"
-              ],
-              "query": [
-                {
-                  "key": "startDate",
-                  "value": "1907-01-01"
-                },
-                {
-                  "key": "endDate",
-                  "value": "1907-01-08"
-                },
-                {
-                  "key": "serviceProviderNumbers",
-                  "value": "63468"
-                },
-                {
-                  "key": "orderByFieldName",
-                  "value": "status",
-                  "disabled": true
-                },
-                {
-                  "key": "status",
-                  "value": "Forecasted",
-                  "type": "text"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Export Payments",
-          "id": "369842a1-3ca8-41c5-8d5c-4f7395283fc9",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              },
-              {
-                "key": "",
-                "value": "",
-                "type": "text",
-                "disabled": true
-              }
-            ],
-            "url": {
-              "raw": "{{Test|Gateway}}/payments/export?startDate=2020-01-01&endDate=2021-12-28&serviceProviderNumbers=63468,21197,43287,PRB_VENDING_US,F4614781,66091",
-              "host": [
-                "{{Test|Gateway}}"
-              ],
-              "path": [
-                "payments",
-                "export"
-              ],
-              "query": [
-                {
-                  "key": "startDate",
-                  "value": "2020-01-01"
-                },
-                {
-                  "key": "endDate",
-                  "value": "2021-12-28"
-                },
-                {
-                  "key": "serviceProviderNumbers",
-                  "value": "63468,21197,43287,PRB_VENDING_US,F4614781,66091"
-                },
-                {
-                  "key": "orderByFieldName",
-                  "value": "status",
-                  "disabled": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Payment Items",
-          "id": "fdcfa46b-d2a0-4b45-b7ab-8f7301780507",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{Test|Gateway}}/payment/items?startDate=2021-03-09&endDate=2021-03-15&serviceProviderNumbers=63468&status=pending",
-              "host": [
-                "{{Test|Gateway}}"
-              ],
-              "path": [
-                "payment",
-                "items"
-              ],
-              "query": [
-                {
-                  "key": "startDate",
-                  "value": "2021-03-09"
-                },
-                {
-                  "key": "pageNumber",
-                  "value": "1",
-                  "disabled": true
-                },
-                {
-                  "key": "endDate",
-                  "value": "2021-03-15"
-                },
-                {
-                  "key": "serviceProviderNumbers",
-                  "value": "63468"
-                },
-                {
-                  "key": "status",
-                  "value": "pending",
-                  "type": "text"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Payment Items Export",
-          "id": "c226de22-3221-46a8-8c02-3b85e96f3a3c",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{Test|Gateway}}/payment/items/export?startDate=2021-03-09&endDate=2021-03-15&serviceProviderNumbers=63468&status=pending",
-              "host": [
-                "{{Test|Gateway}}"
-              ],
-              "path": [
-                "payment",
-                "items",
-                "export"
-              ],
-              "query": [
-                {
-                  "key": "startDate",
-                  "value": "2021-03-09"
-                },
-                {
-                  "key": "pageNumber",
-                  "value": "1",
-                  "disabled": true
-                },
-                {
-                  "key": "endDate",
-                  "value": "2021-03-15"
-                },
-                {
-                  "key": "serviceProviderNumbers",
-                  "value": "63468"
-                },
-                {
-                  "key": "status",
-                  "value": "pending"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Payment",
-          "id": "28a6d161-be0d-4c21-afda-1d7ac7274089",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{Test|Gateway}}/payment?startDate=2021-03-23&endDate=2021-03-29&serviceProviderNumber=21197&status=FORECASTED",
-              "host": [
-                "{{Test|Gateway}}"
-              ],
-              "path": [
-                "payment"
-              ],
-              "query": [
-                {
-                  "key": "startDate",
-                  "value": "2021-03-23"
-                },
-                {
-                  "key": "endDate",
-                  "value": "2021-03-29"
-                },
-                {
-                  "key": "serviceProviderNumber",
-                  "value": "21197"
-                },
-                {
-                  "key": "status",
-                  "value": "FORECASTED"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice Attachment",
-          "id": "3f824504-73a0-4753-8c30-cb7fc8711038",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"displayName\": \"1-4039251552_07152019_125450.PDF\",\r\n    \"cloudStorageId\": \"1320768329080297951-4039251552_07152019_125459.PDF\",\r\n    \"cloudStorageContainerName\": \"biz-myfsn-attachments-invoice-test\",\r\n    \"visibleToCustomer\": true\r\n}"
-            },
-            "url": "{{Test|Gateway}}/invoice/789718944/attachment"
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice Attachments",
-          "id": "7ab97cab-0d62-493b-9e2f-a955951f84b0",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/invoice/789718944/attachments"
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice Line Items",
-          "id": "4fe3bfa6-5158-498f-8caf-5a9775efe117",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "value": "{{Test|Gateway|Token}}",
-                "type": "text"
-              },
-              {
-                "key": "Origin",
-                "value": "http://localhost:3000",
-                "type": "text"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": "{{Test|Gateway}}/invoice/106090286/lineitems"
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice Line Item",
-          "id": "568c9bdb-9cd8-460c-9c5a-a0c1010a02bd",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "value": "{{Test|Gateway|Token}}",
-                "type": "text"
-              },
-              {
-                "key": "Origin",
-                "value": "http://localhost:3000",
-                "type": "text"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": "{{Test|Gateway}}/invoice/106090286/lineitems"
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice Notes",
-          "id": "fc80c98b-e09d-4175-8ae0-94ffca151d7d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/invoice/106087703/notes"
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice Statuses",
-          "id": "afe11fdd-5524-483b-aa24-eac1fd8205b4",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/invoicestatuses"
-          },
-          "response": []
-        },
-        {
-          "name": "Invoice Submission",
-          "id": "948f003f-eaf6-48a0-a38d-3faa926e3ff4",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"sourceSystemName\": \"postman\",\n\t\"serviceRequestNumber\": \"1-2934342222\",\n\t\"serviceProviderNumber\": \"21197\",\n\t\"createdByUserId\": \"mtadkowski\",\n\t\"serviceProviderInvoiceNumber\": \"inv12345\",\n\t\"lineItemList\" : [\n\t\t{\n\t\t\t\"typeName\": \"Labor\",\n\t\t\t\"typeCode\": \"L\",\n\t\t\t\"description\": \"TECHNICIAN LABOR\",\n\t\t\t\"serviceProviderPricingDetail\": {\n\t\t\t\t\"quantity\": 2.5,\n\t\t\t\t\"unitPrice\": 65.25\n\t\t\t},\n\t\t\t\"assetId\": 12345,\n\t\t\t\"capsFailureNote\": \"I want to charge this much!!!\",\n\t\t\t\"sourceSystemItemId\": 1\n\t\t}\n\t],\n\t\"noteList\": [\n\t\t{\n\t\t\t\"text\": \"this is a SP entered note\",\n\t\t\t\"type\": \"SP Entered\",\n\t\t\t\"isVisibleToCustomer\": false,\n\t\t\t\"isVisibleToServiceProvider\": true\n\t\t}\n\t]\n}"
-            },
-            "url": "{{Test|Gateway}}/invoicesubmission"
-          },
-          "response": []
-        },
-        {
-          "name": "Labor Types",
-          "id": "c5ee7f19-5a40-4158-bb5b-4334a30e29bf",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/labortypes"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote",
-          "id": "635df661-24f2-4522-903f-4f7458f5b4e6",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"actor\": \"AccountTeam\",\n\t\"selectedAction\": \"Send to Customer\",\n\t\"selectedReason\": \"Price\",\n\t\"sourceSystemName\": \"VixxoLink\",\n\t\"userEnteredNote\": \"set quote to Customer Review state\",\n\t\"userName\": \"specflow\"\n}"
-            },
-            "url": "{{Test|Gateway}}/quote/904610"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote",
-          "id": "416bda9d-4b1c-4a9d-a262-c110093f4e57",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"createdByUsername\":\"2119701\",\r\n\t\"customerNumber\":\"RAZ01\",\r\n\t\"customerSiteNumber\":\"1230\",\r\n\t\"customerSiteSiebelId\":\"1-HWRPT9\",\r\n\t\"customerTotalAmount\":0.0,\r\n\t\"quoteId\":0,\r\n\t\"serviceProviderNumber\":\"21197\",\r\n\t\"serviceProviderTotalAmount\":0.0,\r\n\t\"serviceRequestNumber\":\"1-4040563282\",\r\n\t\"sourceSystemCorrelationId\":0,\r\n\t\"sourceSystemName\":\"VixxoLink\",\r\n\t\"submissionName\":\"Repair\"\r\n}"
-            },
-            "url": "{{Test|Gateway}}/quote"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote",
-          "id": "b1dd49c5-c118-4757-8646-8964fcf82d9d",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/quote/3991380"
-          },
-          "response": []
-        },
-        {
-          "name": "Quotes",
-          "id": "fef7dde8-67b9-4221-b525-e6b6903aa1ba",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{Test|Gateway}}/quotes?serviceRequestNumber=1-4091216662&visibleToServiceProvider=false",
-              "host": [
-                "{{Test|Gateway}}"
-              ],
-              "path": [
-                "quotes"
-              ],
-              "query": [
-                {
-                  "key": "serviceRequestNumber",
-                  "value": "1-4091216662"
-                },
-                {
-                  "key": "visibleToServiceProvider",
-                  "value": "false",
-                  "type": "text"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "11ee04f4-2fc5-41b7-b341-88cd36b1398e",
-              "name": "Quotes",
-              "originalRequest": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "USER_TOKEN",
-                    "type": "text",
-                    "value": "{{Test|Gateway|Token}}"
-                  },
-                  {
-                    "key": "Origin",
-                    "type": "text",
-                    "value": "http://localhost:3000"
-                  },
-                  {
-                    "key": "Content-Type",
-                    "type": "text",
-                    "value": "application/json"
-                  }
-                ],
-                "url": {
-                  "raw": "{{Test|Gateway}}/quotes/export?customerNumber=Raz01",
-                  "host": [
-                    "{{Test|Gateway}}"
-                  ],
-                  "path": [
-                    "quotes",
-                    "export"
-                  ],
-                  "query": [
-                    {
-                      "key": "customerNumber",
-                      "value": "Raz01"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "xml",
-              "header": [
-                {
-                  "key": "Server",
-                  "value": "nginx/1.15.10"
-                },
-                {
-                  "key": "Date",
-                  "value": "Fri, 27 Aug 2021 16:06:55 GMT"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                },
-                {
-                  "key": "Transfer-Encoding",
-                  "value": "chunked"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive"
-                },
-                {
-                  "key": "Access-Control-Allow-Credentials",
-                  "value": "true"
-                },
-                {
-                  "key": "Cache-Control",
-                  "value": "must-revalidate"
-                },
-                {
-                  "key": "Pragma",
-                  "value": "public"
-                },
-                {
-                  "key": "Content-Transfer-Encoding",
-                  "value": "binary"
-                },
-                {
-                  "key": "Content-disposition",
-                  "value": "attachment; filename=\"Quote.xlsx\""
-                },
-                {
-                  "key": "X-XSS-Protection",
-                  "value": "1; mode=block"
-                },
-                {
-                  "key": "X-Frame-Options",
-                  "value": "DENY"
-                },
-                {
-                  "key": "X-Content-Type-Options",
-                  "value": "nosniff"
-                },
-                {
-                  "key": "Access-Control-Allow-Methods",
-                  "value": "PUT, GET, POST, OPTIONS, DELETE, PATCH, HEAD"
-                },
-                {
-                  "key": "Access-Control-Allow-Headers",
-                  "value": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,Accept,Auth-DeviceID,Auth-DeviceKey,Content-Type,Origin,USER_TOKEN,GROUP_ID_LIST,USER_ROLE,Ocp-Apim-Subscription-Key"
-                },
-                {
-                  "key": "Strict-Transport-Security",
-                  "value": "max-age=15724800; includeSubDomains"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000b\u0000\u0000\u0000_rels/.rels���j�0\f��}\n�{㴃1F�^Ơ�2�\u0007�l%1I,c�[��3�l\u000b\rl�����\u001fH��4\u000e�R�\u001c\fl�\u001a\u0014\u0005�·����q}\u0007*\u000b\u0006�\u0003\u00072\u0010\u0018\u000e���\u0006���;\u001f�*��\rt\"�^�l;\u001a1W\u001c)�N�iD)ejuD�cKz[׷:}g�\f���@:�\r�3����4�7N�\u000bs_\u0015ni�G�M*7�����2R�+�\t�\u000b2�/\u0019�����b��mC�Pp�ֱ$P\u0012OyQ�抒�DsZ��\u001eIС�'un���~�\u0001PK\u0007\b��\u0016��\u0000\u0000\u0000O\u0002\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0013\u0000\u0000\u0000[Content_Types].xml�SMO\u00021\u0010��+6��m��1���\u001fG%\u0011��β\r�J[\u0010���\u0005MDL0�S;yo�{3i�Ӎ5�\u001ac��5lć�B'��nѰ��S}˪��)0�aÜg��`<�\u0006L\u0015��԰.�p'D�\u001dZH�\u0007t��>Z�Tƅ\b ��@q=\u001c�\b�]F��\\4\u0018�=`\u000b+���\u001dP�\u001b\u0006!\u0018-!S.�v�@��+��N�tE\u0004V=nHe7\u000f���S,\u000e;K]\u001a_h7Q+�W8߶Z��re��c�U��\u0010�\u0018��}�\u0019��\f�\u0004\u0005�g�&A��,��H\u001f�$�B<��`�\u0014\"�J\u001db���\u000e\"��\u001c�I�N�1�\u0007�A��\u001c�CI�#\u0017�\u0001�܂v��?|\\�{��`�b������$�c�\u001dD��|2�\u0004PK\u0007\bKB\u0017�>\u0001\u0000\u0000'\u0004\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0010\u0000\u0000\u0000docProps/app.xmlM��\n�0\u0010D�~EȽ��ADҔ�\b��A? ��6�lB�J?ߜ���0���ͯ�)�@��׍\u0014H6���V>\u001f��$;�SC\n\u0011\u0013;̢\u001c(�ra�g�l\u0017�&�e��L!y�%�\u0019�49��`_\u001e���4G���F\u001c��\u0005J��\u0018Wg\r\u0017\u0007�GS�b��\u0014��\n~\u000e�\u0003PK\u0007\b�|wؑ\u0000\u0000\u0000�\u0000\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0011\u0000\u0000\u0000docProps/core.xmlm��J�0\u0010F��)B�ۤ]�.��\"ʂ��`eŻ��m��!�v}{ӺVP/g��a�+w'5�wp�7��YJ1\u0002-��u[��f�l1�k�\u0007�����]�*�e�888c��\u001e<�\u001e홰\u0015�B��\u0010/:Pܧ��q�b��!��%��W�\u0002�)-���%\u000f�L��.F|VJ�(�\u001bf�\u0014\u0004\u0006P��'Y��\u001f6�S�߅y��'�/�8�鸞�xQF��n\u001f��^O�\u000b��峛\t\u0007<�D����|O���f���YB�I~�d\u0005�\u0005�l�K�k6~\u0015�՗1�\u000e���f\u0002���$��W�PK\u0007\b�\u0017y_\n\u0001\u0000\u0000�\u0001\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0014\u0000\u0000\u0000xl/sharedStrings.xmlu�Q\u000b�0\u0014���\u0015c�9�\"��� �$�?@t�m���o\u0011�`�rᜏ{�����.z�F\u0007x��\u0018\t]�Z�&�\u0005�MW8d\u0013\n`Qe\u0006m\u0003��h��6��G�\f\r\u0001n��ք@�\nU�g:�\u001d��^��ɾ!�����\u0015ª+�����Rj�(HF-;\u0017)OЩ8n��\u0012�(y�o�S\u001e\u001d��{!�\u0011/�1�fIē\u0018�n�Y���rH�r���N�}�=\u0001PK\u0007\b�\r�y�\u0000\u0000\u0000>\u0001\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\r\u0000\u0000\u0000xl/styles.xml��=O�0\u0010�w~�坺�*T�$\u001d��XXZ$V7�$\u0016���T\t�\u001e;N� \u0006\u0004��w��}|�%ٮ�\u0002��:�U�W�%F�*͸jr�r(o�xW�d�\u000f\u0002�-�G��\\�[��=!�jAR��\u0006Tة��ԇ�6�\u0019\u000b��h�����;\")W��T'K�\u001d�t�|���\u0014Y��UY�$\u0014�{G'*�\u0012[\u000be�\u0016�\"�\u0018��r����\u0012R�\u0003\u0015�h�ȣ��!��(��Nu�+m�H�)�₉\u000bqib��Pd�z\u000fV�!AS|\u0018\f�Xi\u0005\t3�}Sͨ}{�t�9�%\u001c|Ԗ�!�\"\u0013P�`��i��!q�{-C�8m��\"\"ώ)\b�\n���ѽ֟�}��\f�X|~\u0014�\u000eCCS�0)��9-�g�ͯ���/�O�͏܈\u001a#��N\u001e���'�co;��]�\u0013��dz�\u0010]��\u0003PK\u0007\b����i\u0001\u0000\u0000�\u0003\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000f\u0000\u0000\u0000xl/workbook.xml���N�0\u0010D�|��wj\u0007\u0010�(N/U��@*�]{�X��h�m�|�T\u0001���Ѽ}�f�\u0015\u0006qAb���j�@`���x���޿���k��N��N���5�9���l{\f�Wi�X�.Q0�D:J\u001e\t��\u001e1�A>(�,��\u0011n����H]�-n�=\u0007��&!\u001cL.c��#C��썄3\u0019�W���3\u0003#ȶ��O�W�\u0005�(����{sР&N�\u0001���+�\t����2���;\r�s� �zWb5\u000b�+���~\u0003PK\u0007\bs����\u0000\u0000\u0000\\\u0001\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001a\u0000\u0000\u0000xl/_rels/workbook.xml.rels��Mk\u00021\u0010@���0�nv-�R�^���\u001f0$����$dƯo��R�\u0007OC\u0018�ރ�-�������@Sՠ(����\u0019�ܼ?��b��p��\f�\b��d�A\u0003J�¾O�\n#�\u0001/�޴f�iD�b�P6m�#Jy�N'�[�HO��E�k\u0006����3�W�\u0001��ܑ\u0018`���Zri㪐���?�ض��e�������7p�wj�W5r\u001a��\u0019\u0017�]���\u0010�=�|���<:�[p��7\u0017�O�PK\u0007\b��4��\u0000\u0000\u00009\u0002\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0018\u0000\u0000\u0000xl/worksheets/sheet1.xmle�OO�0\f��|�(w�nc\u0003��\u00130\u0006\u001c�\u0010��Y�њ�J����S�)\u00157?�l=?'��G��\u0000�+k2>�$��)l�L�����\r_�\u0017io��7\u0000Ȩ���7�ݭ\u0010�h@K?�\u001d\u0018\"�uZ\"IW\u000b�9��0�[1K���R\u0019����`�!sPe�n�E�\u000e��\nz\u001f�,�n��\u0005�Rf��C���\u0016\n\u0004���\u0010�ſ�Ͱʛc%Tr���A�\rR�\u0005�\n<Y�%�\n    <u�g�\bmW��vb��I\u001f�$\u0015\u0007�(��>f�1{��l��1���c̮�l\u0013�Ř=�lyf���\u0017��5�JW+���\"ZMǜ\\/8��EpA�9k��΢�\n�.����\u001amw�\r�?���\u0017PK\u0007\b���\u00041\u0001\u0000\u0000L\u0002\u0000\u0000PK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS��\u0016��\u0000\u0000\u0000O\u0002\u0000\u0000\u000b\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000_rels/.relsPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bSKB\u0017�>\u0001\u0000\u0000'\u0004\u0000\u0000\u0013\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001f\u0001\u0000\u0000[Content_Types].xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS�|wؑ\u0000\u0000\u0000�\u0000\u0000\u0000\u0010\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0002\u0000\u0000docProps/app.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS�\u0017y_\n\u0001\u0000\u0000�\u0001\u0000\u0000\u0011\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000m\u0003\u0000\u0000docProps/core.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS�\r�y�\u0000\u0000\u0000>\u0001\u0000\u0000\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0004\u0000\u0000xl/sharedStrings.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS����i\u0001\u0000\u0000�\u0003\u0000\u0000\r\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0005\u0000\u0000xl/styles.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bSs����\u0000\u0000\u0000\\\u0001\u0000\u0000\u000f\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\\\u0007\u0000\u0000xl/workbook.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS��4��\u0000\u0000\u00009\u0002\u0000\u0000\u001a\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000r\b\u0000\u0000xl/_rels/workbook.xml.relsPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS���\u00041\u0001\u0000\u0000L\u0002\u0000\u0000\u0018\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\t\u0000\u0000xl/worksheets/sheet1.xmlPK\u0005\u0006\u0000\u0000\u0000\u0000\t\u0000\t\u0000?\u0002\u0000\u0000\b\u000b\u0000\u0000\u0000\u0000"
-            }
-          ]
-        },
-        {
-          "name": "Quote Actions",
-          "id": "499a5649-cfe5-4aef-9789-3ba9b3b10aa0",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{Test|Gateway}}/quote/actions?actor=AccountTeam",
-              "host": [
-                "{{Test|Gateway}}"
-              ],
-              "path": [
-                "quote",
-                "actions"
-              ],
-              "query": [
-                {
-                  "key": "actor",
-                  "value": "AccountTeam"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Quote Decison",
-          "id": "26941130-4456-407c-a222-49983fff99b5",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/quote/1970427"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote Attachment",
-          "id": "222fda87-a281-4143-8378-64d53ecb77a7",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"displayName\": \"1-4039251552_07152019_125450.PDF\",\r\n    \"cloudStorageId\": \"1320768329080297951-4039251552_07152019_125459.PDF\",\r\n    \"cloudStorageContainerName\": \"biz-myfsn-attachments-invoice-test\",\r\n    \"visibleToCustomer\": true\r\n}"
-            },
-            "url": "{{Test|Gateway}}/quote/1968975/attachment"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote Attachments",
-          "id": "0d0dca4a-2289-4090-81d9-52fec51708ba",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/quote/1968975/attachments"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote Line Item",
-          "id": "e42be7e2-f154-4d27-96cd-2e345eb5e309",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/quote/904069/lineitem/4158423"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote Line Item",
-          "id": "ffcb6a3d-751d-41f5-ad49-de8208edc3ae",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n\t\"lineItemId\": 12052794,\r\n\t\"parentId\": 1968858,\r\n\t\"typeName\": \"Processing Fee\",\r\n\t\"typeCode\": \"G\",\r\n\t\"description\": \"Processing Fee\",\r\n\t\"actionProduct\": false,\r\n\r\n\r\n\t\"lastUpdatedDate\": \"2019-06-28T00:00:00-04:00\",\r\n\t\"lastUpdatedByUsername\": \"1-8FAR1\",\r\n\t\"assetId\": null,\r\n\t\"capsFailureNote\": null,\r\n\t\"sourceSystemItemId\": null,\r\n\t\"incurredOrProposed\":\"M\",\r\n\t\"createdDate\": null,\r\n\t\"createdByUsername\": null,\r\n\t\"sourceSystemName\": null,\r\n\t\"taxDetailList\": []\r\n}"
-            },
-            "url": "{{Test|Gateway}}/quote/3993204/lineItem"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote Line Items",
-          "id": "5131d1c6-4990-462e-920e-29d6cbb2150a",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/quote/3990951/lineitems"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote Notes",
-          "id": "f588ce60-0a4b-4b8f-b6d1-3c81ae879230",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/quote/904088/notes"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote Statuses",
-          "id": "b6c19b2d-82e0-4ac2-8973-739b00f423c3",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/quotestatuses"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote Types",
-          "id": "872a1730-9a32-40f2-a723-94aa6c5d6efe",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Test|Gateway}}/quotetypes"
-          },
-          "response": []
-        },
-        {
-          "name": "Quote Submission",
-          "id": "0a8ccc5b-6095-4ffa-9a3b-fce0e90c8dab",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"sourceSystemName\": \"postman\",\n\t\"serviceRequestNumber\": \"1-2934342222\",\n\t\"serviceProviderNumber\": \"21197\",\n\t\"createdByUserId\": \"mtadkowski\",\n\t\"lineItemList\" : [\n\t\t{\n\t\t\t\"typeName\": \"Labor\",\n\t\t\t\"typeCode\": \"L\",\n\t\t\t\"description\": \"TECHNICIAN LABOR\",\n\t\t\t\"serviceProviderPricingDetail\": {\n\t\t\t\t\"quantity\": 2.5,\n\t\t\t\t\"unitPrice\": 65.25\n\t\t\t},\n\t\t\t\"assetId\": 12345,\n\t\t\t\"capsFailureNote\": \"I want to charge this much!!!\",\n\t\t\t\"sourceSystemItemId\": 1\n\t\t}\n\t],\n\t\"noteList\": [\n\t\t{\n\t\t\t\"text\": \"this is a SP entered note\",\n\t\t\t\"type\": \"Work Description\",\n\t\t\t\"isVisibleToCustomer\": false,\n\t\t\t\"isVisibleToServiceProvider\": true\n\t\t}\n\t]\n}"
-            },
-            "url": "{{Test|Gateway}}/quotesubmission"
-          },
-          "response": []
-        },
-        {
-          "name": "Service Provider Labor Types",
-          "id": "f146ef95-ff7c-4699-aad8-daf544d0af88",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Test|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{Test|Gateway}}/serviceprovider/labortypes?serviceRequestNumber=1-4139914972",
-              "host": [
-                "{{Test|Gateway}}"
-              ],
-              "path": [
-                "serviceprovider",
-                "labortypes"
-              ],
-              "query": [
-                {
-                  "key": "serviceRequestNumber",
-                  "value": "1-4139914972"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Azure get SR with matt",
-          "id": "18fd1eca-fa55-48b1-85bb-91c3595b8c5e",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "https://gatewaytest.vixxo.com/api/sr/tn/1-4066601702"
-          },
-          "response": []
-        }
-      ],
-      "id": "3d0dbb14-07cb-44d7-9c5a-99edaaf8b99c"
-    },
-    {
-      "name": "Staging",
-      "item": [
-        {
-          "name": "Invoice",
-          "id": "182fa74e-d407-424f-80d1-74885585ef1e",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Staging|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": "{{Staging|Gateway}}/invoice/5"
-          },
-          "response": []
-        },
-        {
-          "name": "Get Invoices",
-          "id": "db673ced-dacc-4616-900a-5b9cee5d479e",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "{{Staging|Gateway|Token}}"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{Staging|Gateway}}/invoices?serviceRequestNumber=1-4274738882&serviceProviderNumber=VIXXO-SP04",
-              "host": [
-                "{{Staging|Gateway}}"
-              ],
-              "path": [
-                "invoices"
-              ],
-              "query": [
-                {
-                  "key": "serviceRequestNumber",
-                  "value": "1-4274738882"
-                },
-                {
-                  "key": "serviceProviderNumber",
-                  "value": "VIXXO-SP04"
-                },
-                {
-                  "key": "visibleToCustomer",
-                  "value": "true",
-                  "disabled": true
-                },
-                {
-                  "key": "visibleToServiceProvider",
-                  "value": "false",
-                  "type": "text",
-                  "disabled": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Service Provider Labor Types",
-          "id": "a85d9fc9-0d2e-4cae-a151-04d8f94c7079",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "{{Staging|Gateway}}/serviceprovider/labortypes?serviceRequestNumber=1-4267610352&includeZeroDollarItems=false&includeTimingData=false",
-              "host": [
-                "{{Staging|Gateway}}"
-              ],
-              "path": [
-                "serviceprovider",
-                "labortypes"
-              ],
-              "query": [
-                {
-                  "key": "serviceRequestNumber",
-                  "value": "1-4267610352"
-                },
-                {
-                  "key": "includeZeroDollarItems",
-                  "value": "false"
-                },
-                {
-                  "key": "includeTimingData",
-                  "value": "false"
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "id": "5ec62525-fd16-440d-b706-ebbcad4104cf"
-    },
-    {
-      "name": "Production",
-      "item": [
-        {
-          "name": "Service Provider Labor Types",
-          "id": "6eb0c4cf-73d4-420a-9d6a-7f4d9e4eaf9f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "https://secureapi.vixxo.com/vixxolink/v2/serviceprovider/labortypes?serviceRequestNumber=1-4267610352&includeZeroDollarItems=false&includeTimingData=false",
-              "protocol": "https",
-              "host": [
-                "secureapi",
-                "vixxo",
-                "com"
-              ],
-              "path": [
-                "vixxolink",
-                "v2",
-                "serviceprovider",
-                "labortypes"
-              ],
-              "query": [
-                {
-                  "key": "serviceRequestNumber",
-                  "value": "1-4267610352"
-                },
-                {
-                  "key": "includeZeroDollarItems",
-                  "value": "false"
-                },
-                {
-                  "key": "includeTimingData",
-                  "value": "false"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Service Requests Search",
-          "id": "5ad97511-a96f-43b5-a7ac-053a1a8adedd",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "https://secureapi.vixxo.com/vixxolink/v2/servicerequest?serviceRequestNumber=1-4823531482",
-              "protocol": "https",
-              "host": [
-                "secureapi",
-                "vixxo",
-                "com"
-              ],
-              "path": [
-                "vixxolink",
-                "v2",
-                "servicerequest"
-              ],
-              "query": [
-                {
-                  "key": "serviceRequestNumber",
-                  "value": "1-4823531482"
-                },
-                {
-                  "key": "visibleToServiceProvider",
-                  "value": "true",
-                  "disabled": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Quotes Copy",
-          "id": "1aca1374-149c-481b-bd99-d9ac9ed110af",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "https://secureapi.vixxo.com/vixxolink/v2/quotes?serviceRequestNumber=1-4753816462",
-              "protocol": "https",
-              "host": [
-                "secureapi",
-                "vixxo",
-                "com"
-              ],
-              "path": [
-                "vixxolink",
-                "v2",
-                "quotes"
-              ],
-              "query": [
-                {
-                  "key": "serviceRequestNumber",
-                  "value": "1-4753816462"
-                },
-                {
-                  "key": "visibleToServiceProvider",
-                  "value": "true",
-                  "disabled": true
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Products",
-          "id": "80cde492-1387-4e9a-b2a1-cb20b380fcfe",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "https://secureapi.vixxo.com/vixxolink/v2/products?keywords=\"metal\"",
-              "protocol": "https",
-              "host": [
-                "secureapi",
-                "vixxo",
-                "com"
-              ],
-              "path": [
-                "vixxolink",
-                "v2",
-                "products"
-              ],
-              "query": [
-                {
-                  "key": "visibleToServiceProvider",
-                  "value": "true",
-                  "disabled": true
-                },
-                {
-                  "key": "keywords",
-                  "value": "\"metal\""
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Products Copy",
-          "id": "8fb559b3-3a66-4d88-b4d8-d99ba6c90114",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "USER_TOKEN",
-                "type": "text",
-                "value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
-              },
-              {
-                "key": "Origin",
-                "type": "text",
-                "value": "http://localhost:3000"
-              },
-              {
-                "key": "Content-Type",
-                "type": "text",
-                "value": "application/json"
-              }
-            ],
-            "url": {
-              "raw": "https://secureapi.vixxo.com/vixxolink/v2/product/1-9YURE/caps?customerNumber=MSI01&unitPrice=1",
-              "protocol": "https",
-              "host": [
-                "secureapi",
-                "vixxo",
-                "com"
-              ],
-              "path": [
-                "vixxolink",
-                "v2",
-                "product",
-                "1-9YURE",
-                "caps"
-              ],
-              "query": [
-                {
-                  "key": "visibleToServiceProvider",
-                  "value": "true",
-                  "disabled": true
-                },
-                {
-                  "key": "customerNumber",
-                  "value": "MSI01"
-                },
-                {
-                  "key": "unitPrice",
-                  "value": "1"
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "id": "2e7e4dd2-e248-4a40-8811-9f0d79de2189"
-    }
-  ]
+	"info": {
+		"_postman_id": "0369d2aa-efb4-49eb-9e9a-3512695cb7ac",
+		"name": "Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test",
+			"item": [
+				{
+					"name": "Invoice",
+					"id": "1ede766d-744a-4b9d-bad5-3d3afec6c995",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\": \"ReviewByAP\",\n\t\"updatedByUserId\": \"mtadkowski\"\n}"
+						},
+						"url": "{{Test|Gateway}}/invoice/106090312"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Audit",
+					"id": "ce0aab2d-3e59-429b-b25c-731c7f3735c3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/invoice/793412120/audit"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Action",
+					"id": "c3cb4a28-e4d6-4d1b-bfaf-f6759a78fe7f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"actor\": \"ServiceProvider\",\n\t\"selectedAction\": \"Submit\"\n}"
+						},
+						"url": "{{Test|Gateway}}/invoice/789718975"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoices",
+					"id": "49364b04-7f60-42f3-a8e7-c99f499f147c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/invoices?pageNumber=1&serviceProviderNumber=21197",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"invoices"
+							],
+							"query": [
+								{
+									"key": "customerNumber",
+									"value": "US206",
+									"disabled": true
+								},
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "visibleToCustomer",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "serviceProviderNumber",
+									"value": "21197"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice",
+					"id": "d236dbd9-17a7-4efa-b59c-1c721e4d71e6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/invoice/689262762"
+					},
+					"response": []
+				},
+				{
+					"name": "Payments",
+					"id": "0c9c1cea-f87b-42cd-83cc-f75b644d1059",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/payments?startDate=1907-01-01&endDate=1907-01-08&serviceProviderNumbers=63468&status=Forecasted",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"payments"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "1907-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "1907-01-08"
+								},
+								{
+									"key": "serviceProviderNumbers",
+									"value": "63468"
+								},
+								{
+									"key": "status",
+									"value": "Forecasted"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Payments",
+					"id": "369842a1-3ca8-41c5-8d5c-4f7395283fc9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/payments/export?startDate=2020-01-01&endDate=2021-12-28&serviceProviderNumbers=63468,21197,43287,PRB_VENDING_US,F4614781,66091",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"payments",
+								"export"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2020-01-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2021-12-28"
+								},
+								{
+									"key": "serviceProviderNumbers",
+									"value": "63468,21197,43287,PRB_VENDING_US,F4614781,66091"
+								},
+								{
+									"key": "orderByFieldName",
+									"value": "status",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Items",
+					"id": "fdcfa46b-d2a0-4b45-b7ab-8f7301780507",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/payment/items?startDate=2021-03-09&endDate=2021-03-15&serviceProviderNumbers=63468&status=pending",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"payment",
+								"items"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2021-03-09"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2021-03-15"
+								},
+								{
+									"key": "serviceProviderNumbers",
+									"value": "63468"
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Items Export",
+					"id": "c226de22-3221-46a8-8c02-3b85e96f3a3c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/payment/items/export?startDate=2021-03-09&endDate=2021-03-15&serviceProviderNumbers=63468&status=pending",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"payment",
+								"items",
+								"export"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2021-03-09"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2021-03-15"
+								},
+								{
+									"key": "serviceProviderNumbers",
+									"value": "63468"
+								},
+								{
+									"key": "status",
+									"value": "pending"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment",
+					"id": "28a6d161-be0d-4c21-afda-1d7ac7274089",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/payment?startDate=2021-03-23&endDate=2021-03-29&serviceProviderNumber=21197&status=FORECASTED",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"payment"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2021-03-23"
+								},
+								{
+									"key": "endDate",
+									"value": "2021-03-29"
+								},
+								{
+									"key": "serviceProviderNumber",
+									"value": "21197"
+								},
+								{
+									"key": "status",
+									"value": "FORECASTED"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Attachment",
+					"id": "3f824504-73a0-4753-8c30-cb7fc8711038",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"displayName\": \"1-4039251552_07152019_125450.PDF\",\r\n    \"cloudStorageId\": \"1320768329080297951-4039251552_07152019_125459.PDF\",\r\n    \"cloudStorageContainerName\": \"biz-myfsn-attachments-invoice-test\",\r\n    \"visibleToCustomer\": true\r\n}"
+						},
+						"url": "{{Test|Gateway}}/invoice/789718944/attachment"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Attachments",
+					"id": "7ab97cab-0d62-493b-9e2f-a955951f84b0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/invoice/789718944/attachments"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Line Items",
+					"id": "4fe3bfa6-5158-498f-8caf-5a9775efe117",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"value": "{{Test|Gateway|Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{Test|Gateway}}/invoice/106090286/lineitems"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Line Item",
+					"id": "568c9bdb-9cd8-460c-9c5a-a0c1010a02bd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"value": "{{Test|Gateway|Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{Test|Gateway}}/invoice/106090286/lineitems"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Notes",
+					"id": "fc80c98b-e09d-4175-8ae0-94ffca151d7d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/invoice/106087703/notes"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Statuses",
+					"id": "afe11fdd-5524-483b-aa24-eac1fd8205b4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/invoicestatuses"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Submission",
+					"id": "948f003f-eaf6-48a0-a38d-3faa926e3ff4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"sourceSystemName\": \"postman\",\n\t\"serviceRequestNumber\": \"1-2934342222\",\n\t\"serviceProviderNumber\": \"21197\",\n\t\"createdByUserId\": \"mtadkowski\",\n\t\"serviceProviderInvoiceNumber\": \"inv12345\",\n\t\"lineItemList\" : [\n\t\t{\n\t\t\t\"typeName\": \"Labor\",\n\t\t\t\"typeCode\": \"L\",\n\t\t\t\"description\": \"TECHNICIAN LABOR\",\n\t\t\t\"serviceProviderPricingDetail\": {\n\t\t\t\t\"quantity\": 2.5,\n\t\t\t\t\"unitPrice\": 65.25\n\t\t\t},\n\t\t\t\"assetId\": 12345,\n\t\t\t\"capsFailureNote\": \"I want to charge this much!!!\",\n\t\t\t\"sourceSystemItemId\": 1\n\t\t}\n\t],\n\t\"noteList\": [\n\t\t{\n\t\t\t\"text\": \"this is a SP entered note\",\n\t\t\t\"type\": \"SP Entered\",\n\t\t\t\"isVisibleToCustomer\": false,\n\t\t\t\"isVisibleToServiceProvider\": true\n\t\t}\n\t]\n}"
+						},
+						"url": "{{Test|Gateway}}/invoicesubmission"
+					},
+					"response": []
+				},
+				{
+					"name": "Labor Types",
+					"id": "c5ee7f19-5a40-4158-bb5b-4334a30e29bf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/labortypes"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote",
+					"id": "635df661-24f2-4522-903f-4f7458f5b4e6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"actor\": \"AccountTeam\",\n\t\"selectedAction\": \"Send to Customer\",\n\t\"selectedReason\": \"Price\",\n\t\"sourceSystemName\": \"VixxoLink\",\n\t\"userEnteredNote\": \"set quote to Customer Review state\",\n\t\"userName\": \"specflow\"\n}"
+						},
+						"url": "{{Test|Gateway}}/quote/904610"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote",
+					"id": "416bda9d-4b1c-4a9d-a262-c110093f4e57",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"createdByUsername\":\"2119701\",\r\n\t\"customerNumber\":\"RAZ01\",\r\n\t\"customerSiteNumber\":\"1230\",\r\n\t\"customerSiteSiebelId\":\"1-HWRPT9\",\r\n\t\"customerTotalAmount\":0.0,\r\n\t\"quoteId\":0,\r\n\t\"serviceProviderNumber\":\"21197\",\r\n\t\"serviceProviderTotalAmount\":0.0,\r\n\t\"serviceRequestNumber\":\"1-4040563282\",\r\n\t\"sourceSystemCorrelationId\":0,\r\n\t\"sourceSystemName\":\"VixxoLink\",\r\n\t\"submissionName\":\"Repair\"\r\n}"
+						},
+						"url": "{{Test|Gateway}}/quote"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote",
+					"id": "b1dd49c5-c118-4757-8646-8964fcf82d9d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/quote/3991380"
+					},
+					"response": []
+				},
+				{
+					"name": "Quotes",
+					"id": "fef7dde8-67b9-4221-b525-e6b6903aa1ba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/quotes?serviceRequestNumber=1-4091216662&visibleToServiceProvider=false",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"quotes"
+							],
+							"query": [
+								{
+									"key": "serviceRequestNumber",
+									"value": "1-4091216662"
+								},
+								{
+									"key": "visibleToServiceProvider",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "11ee04f4-2fc5-41b7-b341-88cd36b1398e",
+							"name": "Quotes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "USER_TOKEN",
+										"type": "text",
+										"value": "{{Test|Gateway|Token}}"
+									},
+									{
+										"key": "Origin",
+										"type": "text",
+										"value": "http://localhost:3000"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{Test|Gateway}}/quotes/export?customerNumber=Raz01",
+									"host": [
+										"{{Test|Gateway}}"
+									],
+									"path": [
+										"quotes",
+										"export"
+									],
+									"query": [
+										{
+											"key": "customerNumber",
+											"value": "Raz01"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "xml",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.15.10"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 Aug 2021 16:06:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "public"
+								},
+								{
+									"key": "Content-Transfer-Encoding",
+									"value": "binary"
+								},
+								{
+									"key": "Content-disposition",
+									"value": "attachment; filename=\"Quote.xlsx\""
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "PUT, GET, POST, OPTIONS, DELETE, PATCH, HEAD"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,Accept,Auth-DeviceID,Auth-DeviceKey,Content-Type,Origin,USER_TOKEN,GROUP_ID_LIST,USER_ROLE,Ocp-Apim-Subscription-Key"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000b\u0000\u0000\u0000_rels/.rels���j�0\f��}\n�{㴃1F�^Ơ�2�\u0007�l%1I,c�[��3�l\u000b\rl�����\u001fH��4\u000e�R�\u001c\fl�\u001a\u0014\u0005�·����q}\u0007*\u000b\u0006�\u0003\u00072\u0010\u0018\u000e���\u0006���;\u001f�*��\rt\"�^�l;\u001a1W\u001c)�N�iD)ejuD�cKz[׷:}g�\f���@:�\r�3����4�7N�\u000bs_\u0015ni�G�M*7�����2R�+�\t�\u000b2�/\u0019�����b��mC�Pp�ֱ$P\u0012OyQ�抒�DsZ��\u001eIС�'un���~�\u0001PK\u0007\b��\u0016��\u0000\u0000\u0000O\u0002\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0013\u0000\u0000\u0000[Content_Types].xml�SMO\u00021\u0010��+6��m��1���\u001fG%\u0011��β\r�J[\u0010���\u0005MDL0�S;yo�{3i�Ӎ5�\u001ac��5lć�B'��nѰ��S}˪��)0�aÜg��`<�\u0006L\u0015��԰.�p'D�\u001dZH�\u0007t��>Z�Tƅ\b ��@q=\u001c�\b�]F��\\4\u0018�=`\u000b+���\u001dP�\u001b\u0006!\u0018-!S.�v�@��+��N�tE\u0004V=nHe7\u000f���S,\u000e;K]\u001a_h7Q+�W8߶Z��re��c�U��\u0010�\u0018��}�\u0019��\f�\u0004\u0005�g�&A��,��H\u001f�$�B<��`�\u0014\"�J\u001db���\u000e\"��\u001c�I�N�1�\u0007�A��\u001c�CI�#\u0017�\u0001�܂v��?|\\�{��`�b������$�c�\u001dD��|2�\u0004PK\u0007\bKB\u0017�>\u0001\u0000\u0000'\u0004\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0010\u0000\u0000\u0000docProps/app.xmlM��\n�0\u0010D�~EȽ��ADҔ�\b��A? ��6�lB�J?ߜ���0���ͯ�)�@��׍\u0014H6���V>\u001f��$;�SC\n\u0011\u0013;̢\u001c(�ra�g�l\u0017�&�e��L!y�%�\u0019�49��`_\u001e���4G���F\u001c��\u0005J��\u0018Wg\r\u0017\u0007�GS�b��\u0014��\n~\u000e�\u0003PK\u0007\b�|wؑ\u0000\u0000\u0000�\u0000\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0011\u0000\u0000\u0000docProps/core.xmlm��J�0\u0010F��)B�ۤ]�.��\"ʂ��`eŻ��m��!�v}{ӺVP/g��a�+w'5�wp�7��YJ1\u0002-��u[��f�l1�k�\u0007�����]�*�e�888c��\u001e<�\u001e홰\u0015�B��\u0010/:Pܧ��q�b��!��%��W�\u0002�)-���%\u000f�L��.F|VJ�(�\u001bf�\u0014\u0004\u0006P��'Y��\u001f6�S�߅y��'�/�8�鸞�xQF��n\u001f��^O�\u000b��峛\t\u0007<�D����|O���f���YB�I~�d\u0005�\u0005�l�K�k6~\u0015�՗1�\u000e���f\u0002���$��W�PK\u0007\b�\u0017y_\n\u0001\u0000\u0000�\u0001\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0014\u0000\u0000\u0000xl/sharedStrings.xmlu�Q\u000b�0\u0014���\u0015c�9�\"��� �$�?@t�m���o\u0011�`�rᜏ{�����.z�F\u0007x��\u0018\t]�Z�&�\u0005�MW8d\u0013\n`Qe\u0006m\u0003��h��6��G�\f\r\u0001n��ք@�\nU�g:�\u001d��^��ɾ!�����\u0015ª+�����Rj�(HF-;\u0017)OЩ8n��\u0012�(y�o�S\u001e\u001d��{!�\u0011/�1�fIē\u0018�n�Y���rH�r���N�}�=\u0001PK\u0007\b�\r�y�\u0000\u0000\u0000>\u0001\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\r\u0000\u0000\u0000xl/styles.xml��=O�0\u0010�w~�坺�*T�$\u001d��XXZ$V7�$\u0016���T\t�\u001e;N� \u0006\u0004��w��}|�%ٮ�\u0002��:�U�W�%F�*͸jr�r(o�xW�d�\u000f\u0002�-�G��\\�[��=!�jAR��\u0006Tة��ԇ�6�\u0019\u000b��h�����;\")W��T'K�\u001d�t�|���\u0014Y��UY�$\u0014�{G'*�\u0012[\u000be�\u0016�\"�\u0018��r����\u0012R�\u0003\u0015�h�ȣ��!��(��Nu�+m�H�)�₉\u000bqib��Pd�z\u000fV�!AS|\u0018\f�Xi\u0005\t3�}Sͨ}{�t�9�%\u001c|Ԗ�!�\"\u0013P�`��i��!q�{-C�8m��\"\"ώ)\b�\n���ѽ֟�}��\f�X|~\u0014�\u000eCCS�0)��9-�g�ͯ���/�O�͏܈\u001a#��N\u001e���'�co;��]�\u0013��dz�\u0010]��\u0003PK\u0007\b����i\u0001\u0000\u0000�\u0003\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u000f\u0000\u0000\u0000xl/workbook.xml���N�0\u0010D�|��wj\u0007\u0010�(N/U��@*�]{�X��h�m�|�T\u0001���Ѽ}�f�\u0015\u0006qAb���j�@`���x���޿���k��N��N���5�9���l{\f�Wi�X�.Q0�D:J\u001e\t��\u001e1�A>(�,��\u0011n����H]�-n�=\u0007��&!\u001cL.c��#C��썄3\u0019�W���3\u0003#ȶ��O�W�\u0005�(����{sР&N�\u0001���+�\t����2���;\r�s� �zWb5\u000b�+���~\u0003PK\u0007\bs����\u0000\u0000\u0000\\\u0001\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001a\u0000\u0000\u0000xl/_rels/workbook.xml.rels��Mk\u00021\u0010@���0�nv-�R�^���\u001f0$����$dƯo��R�\u0007OC\u0018�ރ�-�������@Sՠ(����\u0019�ܼ?��b��p��\f�\b��d�A\u0003J�¾O�\n#�\u0001/�޴f�iD�b�P6m�#Jy�N'�[�HO��E�k\u0006����3�W�\u0001��ܑ\u0018`���Zri㪐���?�ض��e�������7p�wj�W5r\u001a��\u0019\u0017�]���\u0010�=�|���<:�[p��7\u0017�O�PK\u0007\b��4��\u0000\u0000\u00009\u0002\u0000\u0000PK\u0003\u0004\u0014\u0000\b\b\b\u0000�`\u001bS\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0018\u0000\u0000\u0000xl/worksheets/sheet1.xmle�OO�0\f��|�(w�nc\u0003��\u00130\u0006\u001c�\u0010��Y�њ�J����S�)\u00157?�l=?'��G��\u0000�+k2>�$��)l�L�����\r_�\u0017io��7\u0000Ȩ���7�ݭ\u0010�h@K?�\u001d\u0018\"�uZ\"IW\u000b�9��0�[1K���R\u0019����`�!sPe�n�E�\u000e��\nz\u001f�,�n��\u0005�Rf��C���\u0016\n\u0004���\u0010�ſ�Ͱʛc%Tr���A�\rR�\u0005�\n<Y�%�\n    <u�g�\bmW��vb��I\u001f�$\u0015\u0007�(��>f�1{��l��1���c̮�l\u0013�Ř=�lyf���\u0017��5�JW+���\"ZMǜ\\/8��EpA�9k��΢�\n�.����\u001amw�\r�?���\u0017PK\u0007\b���\u00041\u0001\u0000\u0000L\u0002\u0000\u0000PK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS��\u0016��\u0000\u0000\u0000O\u0002\u0000\u0000\u000b\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000_rels/.relsPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bSKB\u0017�>\u0001\u0000\u0000'\u0004\u0000\u0000\u0013\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001f\u0001\u0000\u0000[Content_Types].xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS�|wؑ\u0000\u0000\u0000�\u0000\u0000\u0000\u0010\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0002\u0000\u0000docProps/app.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS�\u0017y_\n\u0001\u0000\u0000�\u0001\u0000\u0000\u0011\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000m\u0003\u0000\u0000docProps/core.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS�\r�y�\u0000\u0000\u0000>\u0001\u0000\u0000\u0014\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0004\u0000\u0000xl/sharedStrings.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS����i\u0001\u0000\u0000�\u0003\u0000\u0000\r\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\u0005\u0000\u0000xl/styles.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bSs����\u0000\u0000\u0000\\\u0001\u0000\u0000\u000f\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\\\u0007\u0000\u0000xl/workbook.xmlPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS��4��\u0000\u0000\u00009\u0002\u0000\u0000\u001a\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000r\b\u0000\u0000xl/_rels/workbook.xml.relsPK\u0001\u0002\u0014\u0000\u0014\u0000\b\b\b\u0000�`\u001bS���\u00041\u0001\u0000\u0000L\u0002\u0000\u0000\u0018\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000�\t\u0000\u0000xl/worksheets/sheet1.xmlPK\u0005\u0006\u0000\u0000\u0000\u0000\t\u0000\t\u0000?\u0002\u0000\u0000\b\u000b\u0000\u0000\u0000\u0000"
+						}
+					]
+				},
+				{
+					"name": "Quote Actions",
+					"id": "499a5649-cfe5-4aef-9789-3ba9b3b10aa0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/quote/actions?actor=AccountTeam",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"quote",
+								"actions"
+							],
+							"query": [
+								{
+									"key": "actor",
+									"value": "AccountTeam"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Quote Decison",
+					"id": "26941130-4456-407c-a222-49983fff99b5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/quote/1970427"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote Attachment",
+					"id": "222fda87-a281-4143-8378-64d53ecb77a7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"displayName\": \"1-4039251552_07152019_125450.PDF\",\r\n    \"cloudStorageId\": \"1320768329080297951-4039251552_07152019_125459.PDF\",\r\n    \"cloudStorageContainerName\": \"biz-myfsn-attachments-invoice-test\",\r\n    \"visibleToCustomer\": true\r\n}"
+						},
+						"url": "{{Test|Gateway}}/quote/1968975/attachment"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote Attachments",
+					"id": "0d0dca4a-2289-4090-81d9-52fec51708ba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/quote/1968975/attachments"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote Line Item",
+					"id": "e42be7e2-f154-4d27-96cd-2e345eb5e309",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/quote/904069/lineitem/4158423"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote Line Item",
+					"id": "ffcb6a3d-751d-41f5-ad49-de8208edc3ae",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"lineItemId\": 12052794,\r\n\t\"parentId\": 1968858,\r\n\t\"typeName\": \"Processing Fee\",\r\n\t\"typeCode\": \"G\",\r\n\t\"description\": \"Processing Fee\",\r\n\t\"actionProduct\": false,\r\n\r\n\r\n\t\"lastUpdatedDate\": \"2019-06-28T00:00:00-04:00\",\r\n\t\"lastUpdatedByUsername\": \"1-8FAR1\",\r\n\t\"assetId\": null,\r\n\t\"capsFailureNote\": null,\r\n\t\"sourceSystemItemId\": null,\r\n\t\"incurredOrProposed\":\"M\",\r\n\t\"createdDate\": null,\r\n\t\"createdByUsername\": null,\r\n\t\"sourceSystemName\": null,\r\n\t\"taxDetailList\": []\r\n}"
+						},
+						"url": "{{Test|Gateway}}/quote/3993204/lineItem"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote Line Items",
+					"id": "5131d1c6-4990-462e-920e-29d6cbb2150a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/quote/3990951/lineitems"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote Notes",
+					"id": "f588ce60-0a4b-4b8f-b6d1-3c81ae879230",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/quote/904088/notes"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote Statuses",
+					"id": "b6c19b2d-82e0-4ac2-8973-739b00f423c3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/quotestatuses"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote Types",
+					"id": "872a1730-9a32-40f2-a723-94aa6c5d6efe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/quotetypes"
+					},
+					"response": []
+				},
+				{
+					"name": "Quote Submission",
+					"id": "0a8ccc5b-6095-4ffa-9a3b-fce0e90c8dab",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"sourceSystemName\": \"postman\",\n\t\"serviceRequestNumber\": \"1-2934342222\",\n\t\"serviceProviderNumber\": \"21197\",\n\t\"createdByUserId\": \"mtadkowski\",\n\t\"lineItemList\" : [\n\t\t{\n\t\t\t\"typeName\": \"Labor\",\n\t\t\t\"typeCode\": \"L\",\n\t\t\t\"description\": \"TECHNICIAN LABOR\",\n\t\t\t\"serviceProviderPricingDetail\": {\n\t\t\t\t\"quantity\": 2.5,\n\t\t\t\t\"unitPrice\": 65.25\n\t\t\t},\n\t\t\t\"assetId\": 12345,\n\t\t\t\"capsFailureNote\": \"I want to charge this much!!!\",\n\t\t\t\"sourceSystemItemId\": 1\n\t\t}\n\t],\n\t\"noteList\": [\n\t\t{\n\t\t\t\"text\": \"this is a SP entered note\",\n\t\t\t\"type\": \"Work Description\",\n\t\t\t\"isVisibleToCustomer\": false,\n\t\t\t\"isVisibleToServiceProvider\": true\n\t\t}\n\t]\n}"
+						},
+						"url": "{{Test|Gateway}}/quotesubmission"
+					},
+					"response": []
+				},
+				{
+					"name": "Service Provider Labor Types",
+					"id": "f146ef95-ff7c-4699-aad8-daf544d0af88",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/serviceprovider/labortypes?serviceRequestNumber=1-4139914972",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"serviceprovider",
+								"labortypes"
+							],
+							"query": [
+								{
+									"key": "serviceRequestNumber",
+									"value": "1-4139914972"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Azure get SR with matt",
+					"id": "18fd1eca-fa55-48b1-85bb-91c3595b8c5e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://gatewaytest.vixxo.com/api/sr/tn/1-4066601702"
+					},
+					"response": []
+				}
+			],
+			"id": "3d0dbb14-07cb-44d7-9c5a-99edaaf8b99c"
+		},
+		{
+			"name": "Staging",
+			"item": [
+				{
+					"name": "Invoice",
+					"id": "182fa74e-d407-424f-80d1-74885585ef1e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Staging|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Staging|Gateway}}/invoice/5"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoices",
+					"id": "db673ced-dacc-4616-900a-5b9cee5d479e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Staging|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Staging|Gateway}}/invoices?serviceRequestNumber=1-4274738882&serviceProviderNumber=VIXXO-SP04",
+							"host": [
+								"{{Staging|Gateway}}"
+							],
+							"path": [
+								"invoices"
+							],
+							"query": [
+								{
+									"key": "serviceRequestNumber",
+									"value": "1-4274738882"
+								},
+								{
+									"key": "serviceProviderNumber",
+									"value": "VIXXO-SP04"
+								},
+								{
+									"key": "visibleToCustomer",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "visibleToServiceProvider",
+									"value": "false",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service Provider Labor Types",
+					"id": "a85d9fc9-0d2e-4cae-a151-04d8f94c7079",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Staging|Gateway}}/serviceprovider/labortypes?serviceRequestNumber=1-4267610352&includeZeroDollarItems=false&includeTimingData=false",
+							"host": [
+								"{{Staging|Gateway}}"
+							],
+							"path": [
+								"serviceprovider",
+								"labortypes"
+							],
+							"query": [
+								{
+									"key": "serviceRequestNumber",
+									"value": "1-4267610352"
+								},
+								{
+									"key": "includeZeroDollarItems",
+									"value": "false"
+								},
+								{
+									"key": "includeTimingData",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "5ec62525-fd16-440d-b706-ebbcad4104cf"
+		},
+		{
+			"name": "Production",
+			"item": [
+				{
+					"name": "Service Provider Labor Types",
+					"id": "6eb0c4cf-73d4-420a-9d6a-7f4d9e4eaf9f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://secureapi.vixxo.com/vixxolink/v2/serviceprovider/labortypes?serviceRequestNumber=1-4267610352&includeZeroDollarItems=false&includeTimingData=false",
+							"protocol": "https",
+							"host": [
+								"secureapi",
+								"vixxo",
+								"com"
+							],
+							"path": [
+								"vixxolink",
+								"v2",
+								"serviceprovider",
+								"labortypes"
+							],
+							"query": [
+								{
+									"key": "serviceRequestNumber",
+									"value": "1-4267610352"
+								},
+								{
+									"key": "includeZeroDollarItems",
+									"value": "false"
+								},
+								{
+									"key": "includeTimingData",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Service Requests Search",
+					"id": "5ad97511-a96f-43b5-a7ac-053a1a8adedd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://secureapi.vixxo.com/vixxolink/v2/servicerequest?serviceRequestNumber=1-4823531482",
+							"protocol": "https",
+							"host": [
+								"secureapi",
+								"vixxo",
+								"com"
+							],
+							"path": [
+								"vixxolink",
+								"v2",
+								"servicerequest"
+							],
+							"query": [
+								{
+									"key": "serviceRequestNumber",
+									"value": "1-4823531482"
+								},
+								{
+									"key": "visibleToServiceProvider",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Quotes Copy",
+					"id": "1aca1374-149c-481b-bd99-d9ac9ed110af",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://secureapi.vixxo.com/vixxolink/v2/quotes?serviceRequestNumber=1-4753816462",
+							"protocol": "https",
+							"host": [
+								"secureapi",
+								"vixxo",
+								"com"
+							],
+							"path": [
+								"vixxolink",
+								"v2",
+								"quotes"
+							],
+							"query": [
+								{
+									"key": "serviceRequestNumber",
+									"value": "1-4753816462"
+								},
+								{
+									"key": "visibleToServiceProvider",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products",
+					"id": "80cde492-1387-4e9a-b2a1-cb20b380fcfe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://secureapi.vixxo.com/vixxolink/v2/products?keywords=\"metal\"",
+							"protocol": "https",
+							"host": [
+								"secureapi",
+								"vixxo",
+								"com"
+							],
+							"path": [
+								"vixxolink",
+								"v2",
+								"products"
+							],
+							"query": [
+								{
+									"key": "visibleToServiceProvider",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "keywords",
+									"value": "\"metal\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products Copy",
+					"id": "8fb559b3-3a66-4d88-b4d8-d99ba6c90114",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://secureapi.vixxo.com/vixxolink/v2/product/1-9YURE/caps?customerNumber=MSI01&unitPrice=1",
+							"protocol": "https",
+							"host": [
+								"secureapi",
+								"vixxo",
+								"com"
+							],
+							"path": [
+								"vixxolink",
+								"v2",
+								"product",
+								"1-9YURE",
+								"caps"
+							],
+							"query": [
+								{
+									"key": "visibleToServiceProvider",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "customerNumber",
+									"value": "MSI01"
+								},
+								{
+									"key": "unitPrice",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "2e7e4dd2-e248-4a40-8811-9f0d79de2189"
+		}
+	]
 }
