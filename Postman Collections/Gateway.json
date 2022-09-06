@@ -455,7 +455,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{Test|Gateway}}/payment?startDate=2021-03-23&endDate=2021-03-29&serviceProviderNumber=21197&status=FORECASTED",
+							"raw": "{{Test|Gateway}}/payment?paymentId=23156&serviceProviderNumber=21197",
 							"host": [
 								"{{Test|Gateway}}"
 							],
@@ -464,20 +464,12 @@
 							],
 							"query": [
 								{
-									"key": "startDate",
-									"value": "2021-03-23"
-								},
-								{
-									"key": "endDate",
-									"value": "2021-03-29"
+									"key": "paymentId",
+									"value": "23156"
 								},
 								{
 									"key": "serviceProviderNumber",
 									"value": "21197"
-								},
-								{
-									"key": "status",
-									"value": "FORECASTED"
 								}
 							]
 						}
