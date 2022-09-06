@@ -477,6 +477,53 @@
 					"response": []
 				},
 				{
+					"name": "Payments",
+					"id": "2e7c1f13-e859-4bc0-82c6-7cea3132ca09",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/payment?paymentId=23156&serviceProviderNumber=21197",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"payment"
+							],
+							"query": [
+								{
+									"key": "paymentId",
+									"value": "23156"
+								},
+								{
+									"key": "serviceProviderNumber",
+									"value": "21197"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Invoice Attachment",
 					"id": "3f824504-73a0-4753-8c30-cb7fc8711038",
 					"protocolProfileBehavior": {
