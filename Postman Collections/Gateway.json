@@ -455,7 +455,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{Test|Gateway}}/payment?paymentId=23156&serviceProviderNumber=21197",
+							"raw": "{{Test|Gateway}}/payment?paymentId=353252&serviceProviderNumber=66585",
 							"host": [
 								"{{Test|Gateway}}"
 							],
@@ -465,11 +465,11 @@
 							"query": [
 								{
 									"key": "paymentId",
-									"value": "23156"
+									"value": "353252"
 								},
 								{
 									"key": "serviceProviderNumber",
-									"value": "21197"
+									"value": "66585"
 								}
 							]
 						}
