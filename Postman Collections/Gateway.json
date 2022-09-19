@@ -583,30 +583,45 @@
 				},
 				{
 					"name": "Invoice Line Items",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d79dd7b2-adbc-40cb-ae47-a73008bdc820",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"Validation|Enterprise|AccessToken\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "4fe3bfa6-5158-498f-8caf-5a9775efe117",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
 						"header": [
 							{
-								"key": "USER_TOKEN",
-								"value": "{{Test|Gateway|Token}}",
-								"type": "text"
-							},
-							{
-								"key": "Origin",
-								"value": "http://localhost:3000",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
+								"key": "x-api-key",
+								"value": "{{AWS|Gateway|ApiKey}}",
 								"type": "text"
 							}
 						],
-						"url": "{{Test|Gateway}}/invoice/106090286/lineitems"
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"grant_type\":\"password\",\n\t\"client_id\":\"rxIBPFeDkYHzCOBnkkqNLtaVJ5hkxUSl\",\n\t\"username\":\"some email address goes here\",\n\t\"password\":\"some password goes here\",\n\t\"scope\":\"openid profile email\",\n\t\"audience\":\"https://validation-api.vixxo.com/\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{Test|Gateway}}/invoice/757249012/lineitems"
 					},
 					"response": []
 				},
