@@ -502,21 +502,17 @@
 							}
 						],
 						"url": {
-							"raw": "{{Test|Gateway}}/payment?paymentId=23156&serviceProviderNumber=21197",
+							"raw": "{{Test|Gateway}}/payments?serviceProviderNumbers=66585",
 							"host": [
 								"{{Test|Gateway}}"
 							],
 							"path": [
-								"payment"
+								"payments"
 							],
 							"query": [
 								{
-									"key": "paymentId",
-									"value": "23156"
-								},
-								{
-									"key": "serviceProviderNumber",
-									"value": "21197"
+									"key": "serviceProviderNumbers",
+									"value": "66585"
 								}
 							]
 						}
