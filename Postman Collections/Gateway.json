@@ -582,7 +582,7 @@
 					"response": []
 				},
 				{
-					"name": "Invoice Line Items",
+					"name": "Invoice Audit Rule Justification",
 					"event": [
 						{
 							"listen": "test",
