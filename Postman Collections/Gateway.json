@@ -1647,7 +1647,7 @@
 					"response": []
 				},
 				{
-					"name": "Audit Rule Justification",
+					"name": "Invoice Audit Rule Justification",
 					"id": "04b21c9c-45d9-486b-9b1c-2c649c687c49",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
