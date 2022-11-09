@@ -1648,7 +1648,7 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "USER_TOKEN",
@@ -1666,35 +1666,16 @@
 								"value": "application/json"
 							}
 						],
-						"url": {
-							"raw": "https://secureapi.vixxo.com/vixxolink/v2/serviceprovider/labortypes?serviceRequestNumber=1-4267610352&includeZeroDollarItems=false&includeTimingData=false",
-							"protocol": "https",
-							"host": [
-								"secureapi",
-								"vixxo",
-								"com"
-							],
-							"path": [
-								"vixxolink",
-								"v2",
-								"serviceprovider",
-								"labortypes"
-							],
-							"query": [
-								{
-									"key": "serviceRequestNumber",
-									"value": "1-4267610352"
-								},
-								{
-									"key": "includeZeroDollarItems",
-									"value": "false"
-								},
-								{
-									"key": "includeTimingData",
-									"value": "false"
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cloudStorageUrl\": \"\",\r\n    \"note\": \"testing justification\",\r\n    \"ruleId\": 11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
+							}
+						},
+						"url": "https://secureapi.vixxo.com/vixxolink/v2/invoice/764357292/audit/rule/11/justification"
 					},
 					"response": []
 				},
