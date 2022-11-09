@@ -610,18 +610,23 @@
 								"key": "x-api-key",
 								"value": "{{AWS|Gateway|ApiKey}}",
 								"type": "text"
+							},
+							{
+								"key": "USER_TOKEN",
+								"value": "{{Test|Gateway|Token}}",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"grant_type\":\"password\",\n\t\"client_id\":\"rxIBPFeDkYHzCOBnkkqNLtaVJ5hkxUSl\",\n\t\"username\":\"some email address goes here\",\n\t\"password\":\"some password goes here\",\n\t\"scope\":\"openid profile email\",\n\t\"audience\":\"https://validation-api.vixxo.com/\"\n}",
+							"raw": "{\n    \"cloudStorageUrl\": \"\",\n    \"note\": \"test test test\",\n    \"username\": \"63468@vixxosp.com\",\n    \"ruleId\": 11\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{Test|Gateway}}/invoice/757249012/lineitems"
+						"url": "{{Test|Gateway}}/invoice/759485092/audit/rule/11/justification"
 					},
 					"response": []
 				},
