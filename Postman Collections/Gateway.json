@@ -1642,6 +1642,63 @@
 					"response": []
 				},
 				{
+					"name": "Audit Rule Justification",
+					"id": "04b21c9c-45d9-486b-9b1c-2c649c687c49",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "MYFSNUS:20251019133700:47dab806-ac9e-46fc-8df1-19df4af28138:8ea12d37dcaa3e89f024e1b50fa9551341b5d0055545e342156bdf16fe2e9e11"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://secureapi.vixxo.com/vixxolink/v2/serviceprovider/labortypes?serviceRequestNumber=1-4267610352&includeZeroDollarItems=false&includeTimingData=false",
+							"protocol": "https",
+							"host": [
+								"secureapi",
+								"vixxo",
+								"com"
+							],
+							"path": [
+								"vixxolink",
+								"v2",
+								"serviceprovider",
+								"labortypes"
+							],
+							"query": [
+								{
+									"key": "serviceRequestNumber",
+									"value": "1-4267610352"
+								},
+								{
+									"key": "includeZeroDollarItems",
+									"value": "false"
+								},
+								{
+									"key": "includeTimingData",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Service Requests Search",
 					"id": "5ad97511-a96f-43b5-a7ac-053a1a8adedd",
 					"protocolProfileBehavior": {
