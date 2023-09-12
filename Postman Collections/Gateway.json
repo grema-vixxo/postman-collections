@@ -952,6 +952,54 @@
 					"response": []
 				},
 				{
+					"name": "Quotes Export",
+					"id": "76ff777e-d056-464b-8746-59563ca1d5de",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/quotes?serviceRequestNumber=1-4091216662&visibleToServiceProvider=false",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"quotes"
+							],
+							"query": [
+								{
+									"key": "serviceRequestNumber",
+									"value": "1-4091216662"
+								},
+								{
+									"key": "visibleToServiceProvider",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Quote Actions",
 					"id": "499a5649-cfe5-4aef-9789-3ba9b3b10aa0",
 					"protocolProfileBehavior": {
