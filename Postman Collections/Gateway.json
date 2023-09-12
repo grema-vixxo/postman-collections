@@ -190,6 +190,35 @@
 					"response": []
 				},
 				{
+					"name": "Quote",
+					"id": "d714fd23-23e7-4d6f-a3b9-82e5fb1fe20a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/invoice/689262762"
+					},
+					"response": []
+				},
+				{
 					"name": "Payments",
 					"id": "0c9c1cea-f87b-42cd-83cc-f75b644d1059",
 					"protocolProfileBehavior": {
