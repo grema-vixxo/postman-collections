@@ -977,21 +977,28 @@
 							}
 						],
 						"url": {
-							"raw": "{{Test|Gateway}}/quotes?serviceRequestNumber=1-4091216662&visibleToServiceProvider=false",
+							"raw": "{{Test|Gateway}}/quotes/export?customerNumber=PRB01",
 							"host": [
 								"{{Test|Gateway}}"
 							],
 							"path": [
-								"quotes"
+								"quotes",
+								"export"
 							],
 							"query": [
 								{
 									"key": "serviceRequestNumber",
-									"value": "1-4091216662"
+									"value": "1-4091216662",
+									"disabled": true
 								},
 								{
 									"key": "visibleToServiceProvider",
 									"value": "false",
+									"disabled": true
+								},
+								{
+									"key": "customerNumber",
+									"value": "PRB01",
 									"type": "text"
 								}
 							]
