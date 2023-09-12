@@ -214,7 +214,7 @@
 								"value": "application/json"
 							}
 						],
-						"url": "{{Test|Gateway}}/invoice/689262762"
+						"url": "{{Test|Gateway}}/quote/2432387"
 					},
 					"response": []
 				},
