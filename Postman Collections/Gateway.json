@@ -1840,7 +1840,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://secureapi.vixxo.com/vixxolink/v2/products?keywords=\"metal\"",
+							"raw": "https://secureapi.vixxo.com/vixxolink/v2/invoice/780910842/lineitems",
 							"protocol": "https",
 							"host": [
 								"secureapi",
@@ -1850,17 +1850,15 @@
 							"path": [
 								"vixxolink",
 								"v2",
-								"products"
+								"invoice",
+								"780910842",
+								"lineitems"
 							],
 							"query": [
 								{
 									"key": "visibleToServiceProvider",
 									"value": "true",
 									"disabled": true
-								},
-								{
-									"key": "keywords",
-									"value": "\"metal\""
 								}
 							]
 						}
