@@ -1815,8 +1815,8 @@
 					"response": []
 				},
 				{
-					"name": "Products Copy",
-					"id": "8fb559b3-3a66-4d88-b4d8-d99ba6c90114",
+					"name": "InvoiceLineItems",
+					"id": "ff0c0bbc-2097-4140-93ed-cf20986b71fd",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1840,7 +1840,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://secureapi.vixxo.com/vixxolink/v2/product/1-9YURE/caps?customerNumber=MSI01&unitPrice=1",
+							"raw": "https://secureapi.vixxo.com/vixxolink/v2/products?keywords=\"metal\"",
 							"protocol": "https",
 							"host": [
 								"secureapi",
@@ -1850,9 +1850,7 @@
 							"path": [
 								"vixxolink",
 								"v2",
-								"product",
-								"1-9YURE",
-								"caps"
+								"products"
 							],
 							"query": [
 								{
@@ -1861,12 +1859,8 @@
 									"disabled": true
 								},
 								{
-									"key": "customerNumber",
-									"value": "MSI01"
-								},
-								{
-									"key": "unitPrice",
-									"value": "1"
+									"key": "keywords",
+									"value": "\"metal\""
 								}
 							]
 						}
