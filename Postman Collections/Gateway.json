@@ -1204,8 +1204,41 @@
 					"response": []
 				},
 				{
-					"name": "Invoice Line Item",
+					"name": "Invoice Line Item - Success",
 					"id": "321e9503-f534-4153-89b1-870ea89fb6dd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"assetId\": 0,\r\n    \"description\": \"TECHNICIAN LABOR\",\r\n    \"serviceProviderUnitPriceAndQuantity\": {\r\n        \"quantity\": 35041.0,\r\n        \"unitPrice\": 90.0\r\n    },\r\n    \"sourceSystemName\": \"VixxoLink\",\r\n    \"typeCode\": \"L\",\r\n    \"username\": \"63468@vixxosp.com\"\r\n}"
+						},
+						"url": "{{Test|Gateway}}/invoice/760472012/lineitem"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Line Item - Error",
+					"id": "a33716c8-91e3-400b-9d88-fdf58cfb77e3",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
