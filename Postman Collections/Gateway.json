@@ -1204,6 +1204,39 @@
 					"response": []
 				},
 				{
+					"name": "Invoice Line Item",
+					"id": "321e9503-f534-4153-89b1-870ea89fb6dd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"lineItemId\": 12052794,\r\n\t\"parentId\": 1968858,\r\n\t\"typeName\": \"Processing Fee\",\r\n\t\"typeCode\": \"G\",\r\n\t\"description\": \"Processing Fee\",\r\n\t\"actionProduct\": false,\r\n\r\n\r\n\t\"lastUpdatedDate\": \"2019-06-28T00:00:00-04:00\",\r\n\t\"lastUpdatedByUsername\": \"1-8FAR1\",\r\n\t\"assetId\": null,\r\n\t\"capsFailureNote\": null,\r\n\t\"sourceSystemItemId\": null,\r\n\t\"incurredOrProposed\":\"M\",\r\n\t\"createdDate\": null,\r\n\t\"createdByUsername\": null,\r\n\t\"sourceSystemName\": null,\r\n\t\"taxDetailList\": []\r\n}"
+						},
+						"url": "{{Test|Gateway}}/invoice/3993204/lineItem"
+					},
+					"response": []
+				},
+				{
 					"name": "Quote Line Items",
 					"id": "5131d1c6-4990-462e-920e-29d6cbb2150a",
 					"protocolProfileBehavior": {
