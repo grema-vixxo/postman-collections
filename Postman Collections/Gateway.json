@@ -1230,9 +1230,9 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"lineItemId\": 12052794,\r\n\t\"parentId\": 1968858,\r\n\t\"typeName\": \"Processing Fee\",\r\n\t\"typeCode\": \"G\",\r\n\t\"description\": \"Processing Fee\",\r\n\t\"actionProduct\": false,\r\n\r\n\r\n\t\"lastUpdatedDate\": \"2019-06-28T00:00:00-04:00\",\r\n\t\"lastUpdatedByUsername\": \"1-8FAR1\",\r\n\t\"assetId\": null,\r\n\t\"capsFailureNote\": null,\r\n\t\"sourceSystemItemId\": null,\r\n\t\"incurredOrProposed\":\"M\",\r\n\t\"createdDate\": null,\r\n\t\"createdByUsername\": null,\r\n\t\"sourceSystemName\": null,\r\n\t\"taxDetailList\": []\r\n}"
+							"raw": "{\r\n    \"assetId\": 0,\r\n    \"description\": \"TECHNICIAN LABOR\",\r\n    \"serviceProviderUnitPriceAndQuantity\": {\r\n        \"quantity\": 35041.0,\r\n        \"unitPrice\": 90.0\r\n    },\r\n    \"sourceSystemName\": \"VixxoLink\",\r\n    \"typeCode\": \"L\",\r\n    \"username\": \"63468@vixxosp.com\"\r\n}"
 						},
-						"url": "{{Test|Gateway}}/invoice/3993204/lineItem"
+						"url": "{{Test|Gateway}}/invoice/760472012/lineitem"
 					},
 					"response": []
 				},
