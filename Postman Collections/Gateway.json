@@ -1459,7 +1459,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{Test|Gateway}}/serviceprovider/labortypes?serviceRequestNumber=1-4139914972",
+							"raw": "{{Test|Gateway}}/serviceprovider/labortypes?serviceRequestNumber=1-5354485532",
 							"host": [
 								"{{Test|Gateway}}"
 							],
@@ -1470,7 +1470,7 @@
 							"query": [
 								{
 									"key": "serviceRequestNumber",
-									"value": "1-4139914972"
+									"value": "1-5354485532"
 								}
 							]
 						}
