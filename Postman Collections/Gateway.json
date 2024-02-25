@@ -804,7 +804,22 @@
 								"value": "application/json"
 							}
 						],
-						"url": "{{Test|Gateway}}/labortypes"
+						"url": {
+							"raw": "{{Test|Gateway}}/labortypes?serviceRequestNumber=1-5354479292",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"labortypes"
+							],
+							"query": [
+								{
+									"key": "serviceRequestNumber",
+									"value": "1-5354479292",
+									"type": "text"
+								}
+							]
+						}
 					},
 					"response": []
 				},
