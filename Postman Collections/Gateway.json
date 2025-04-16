@@ -397,6 +397,68 @@
 					"response": []
 				},
 				{
+					"name": "Payment Items Copy",
+					"id": "ea41b250-9e65-4fef-a935-631a721254e6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/payment/items?startDate=2021-03-09&endDate=2021-03-15&serviceProviderNumbers=63468&status=pending",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"payment",
+								"items"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2021-03-09"
+								},
+								{
+									"key": "pageNumber",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2021-03-15"
+								},
+								{
+									"key": "serviceProviderNumbers",
+									"value": "63468"
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Payment Items Export",
 					"id": "c226de22-3221-46a8-8c02-3b85e96f3a3c",
 					"protocolProfileBehavior": {
