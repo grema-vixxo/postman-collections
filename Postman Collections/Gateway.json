@@ -644,35 +644,6 @@
 					"response": []
 				},
 				{
-					"name": "Invoice Attachments",
-					"id": "7ab97cab-0d62-493b-9e2f-a955951f84b0",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "USER_TOKEN",
-								"type": "text",
-								"value": "{{Test|Gateway|Token}}"
-							},
-							{
-								"key": "Origin",
-								"type": "text",
-								"value": "http://localhost:3000"
-							},
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": "{{Test|Gateway}}/invoice/789718944/attachments"
-					},
-					"response": []
-				},
-				{
 					"name": "Invoice Audit Rule Justification",
 					"event": [
 						{
@@ -718,6 +689,35 @@
 							}
 						},
 						"url": "{{Test|Gateway}}/invoice/759485092/audit/rule/11/justification"
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice Attachments",
+					"id": "7ab97cab-0d62-493b-9e2f-a955951f84b0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"type": "text",
+								"value": "{{Test|Gateway|Token}}"
+							},
+							{
+								"key": "Origin",
+								"type": "text",
+								"value": "http://localhost:3000"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": "{{Test|Gateway}}/invoice/789718944/attachments"
 					},
 					"response": []
 				},
