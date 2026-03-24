@@ -167,6 +167,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsImtpZCI6InNwei1SRG9Ea001WExLSVJpRk1MZU94dTZRNXpTMVQ3QmwyajN3SldUeFkiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiI4OGZlYjZkMC1lZjkyLTRlM2EtODdiNS05MTA5MjM1MGE2ZWYiLCJpc3MiOiJodHRwczovL3ZpeHhvYjJjZGV2LmIyY2xvZ2luLmNvbS9mYTc2MjdlYi0wNzdmLTQzY2QtODg2Zi01MWI4NWFmNWFiMGYvdjIuMC8iLCJleHAiOjE3NzQ0MzM2NjAsIm5iZiI6MTc3NDM0NzI2MCwic3ViIjoiOTFmYmJjYzYtNTc5YS00ZTM4LTk4OWQtMjBlODEyM2I5ZWNiIiwib2lkIjoiOTFmYmJjYzYtNTc5YS00ZTM4LTk4OWQtMjBlODEyM2I5ZWNiIiwibmFtZSI6ImRhcnNoYW5hIiwiZ2l2ZW5fbmFtZSI6ImRhcnNoYW5hIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwiaHR0cHM6Ly92aXh4by5jb20vZ3JvdXBzIjpbIlNlcnZpY2UgUHJvdmlkZXIiLCJVc2VyIE1hbmFnZW1lbnQgQWRtaW5pc3RyYXRvciIsIlJlcG9ydCBWaWV3ZXIiLCJTZXJ2aWNlIFByb3ZpZGVyIE1vYmlsZSIsIlNlcnZpY2UgUHJvdmlkZXIgQ29udHJvbGxlciIsIlNlcnZpY2UgUHJvdmlkZXIgRmluYW5jaWFsIiwiRm9ybXMgQWRtaW5pc3RyYXRvciIsIlRWQSBBY2Nlc3MiXSwiaHR0cHM6Ly92aXh4by5jb20vZW1haWwiOiJkYXJzaGFuYTE5c3BAbWFpbGluYXRvci5jb20iLCJjb3JyZWxhdGlvbklkIjoiN2ZiOGRjZTMtMzU5Ny00NDM5LTkyYmEtODIyOTA0MTg3ZWVlIiwibm9uY2UiOiIwMTlkMWYzNC1lZGIyLTdlNzQtYmY2OC1iN2VjMWJkNmE1OGEiLCJzY3AiOiJvcGVuaWQiLCJhenAiOiI4OGZlYjZkMC1lZjkyLTRlM2EtODdiNS05MTA5MjM1MGE2ZWYiLCJ2ZXIiOiIxLjAiLCJpYXQiOjE3NzQzNDcyNjB9.sRO-XV7rDMS0PMklgwTwMcr5jK_9jx4ltUDzm_FitI06MqUcRUe5ED-5vcPhOoio5hUodo4b7Ezu4emTHSPafIptIvcWSiYybNO7yIKz-mNH62FTkCoBfta5qsbSwgjTGlfUnB2HtbDlh8yeKnku3Q9Ja1JThMaySPd5UY2ZlH66Kw5jSMU8eqQtOl5th6Pcx-M-_yNVIEMF1U_0vWkWHOkvikCfxVAJs6ExxMxd-7YlptXuCJtlRPRHi_3yYrYtwIB4PWmMO3VNXp7qBSKvvoKOjTEwQkZiHcvvhOVYI3iCkptSyFYsRyc1Md1mTF0ltM87YKnggbj3uso2H9EjDA"
+							}
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -183,10 +189,25 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "User_",
+								"value": "",
+								"type": "text",
+								"disabled": true
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageNumber\":1,\n    \"pageSize\":250,\n    \"sortFieldName\":\"createdDate\",\n    \"orderByDirection\":\"DESCENDING\",\n    \"serviceProviderNumber\":\"12270, 22096, 22305, 22306, 4000, , 65688 , F3452871, F3453451, F3873031, F5267781, KS68670, MSI_NEXREV, PRB_ENERALLIES, VIXXO-SP\"\n}\n//id, status, siteAddress,, customerSiteName, Customer \n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{Test|Gateway}}/invoices/search",
+							"raw": "{{Test|Gateway}}/invoices/search?visibleToCustomer=true",
 							"host": [
 								"{{Test|Gateway}}"
 							],
@@ -202,8 +223,7 @@
 								},
 								{
 									"key": "visibleToCustomer",
-									"value": "true",
-									"disabled": true
+									"value": "true"
 								}
 							]
 						}
