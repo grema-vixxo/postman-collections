@@ -199,7 +199,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"pageNumber\":1,\n    \"pageSize\":250,\n    \"sortFieldName\":\"createdDate\",\n    \"orderByDirection\":\"DESCENDING\",\n    \"serviceProviderNumber\":\"12270, 22096, 22305, 22306, 4000, , 65688 , F3452871, F3453451, F3873031, F5267781, KS68670, MSI_NEXREV, PRB_ENERALLIES, VIXXO-SP\"\n}\n//id, status, siteAddress,, customerSiteName, Customer \n",
+							"raw": "{\n    \"pageNumber\":1,\n    \"pageSize\":250,\n    \"sortFieldName\":\"createdDate\",\n    \"customerNumber\" : \"SEI01\",\n    \"orderByDirection\":\"DESCENDING\",\n    \"actor\":\"ServiceProvider\",\n    \"serviceProviderNumber\":\"12270, 22096, 22305, 22306, 4000, , 65688 , F3452871, F3453451, F3873031, F5267781, KS68670, MSI_NEXREV, PRB_ENERALLIES, VIXXO-SP\"\n}\n//id, status, siteAddress,, customerSiteName, Customer \n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -207,7 +207,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{Test|Gateway}}/invoices/search?visibleToCustomer=true",
+							"raw": "{{Test|Gateway}}/invoices/search?visibleToServiceProvider=true",
 							"host": [
 								"{{Test|Gateway}}"
 							],
@@ -223,7 +223,13 @@
 								},
 								{
 									"key": "visibleToCustomer",
-									"value": "true"
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "visibleToServiceProvider",
+									"value": "true",
+									"type": "text"
 								}
 							]
 						}
