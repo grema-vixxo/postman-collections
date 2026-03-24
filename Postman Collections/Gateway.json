@@ -161,6 +161,56 @@
 					"response": []
 				},
 				{
+					"name": "Invoices Search",
+					"id": "9d457565-a230-458e-a5e9-cb41fef42def",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "USER_TOKEN",
+								"value": "{{Test|Gateway|Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Origin",
+								"value": "http://localhost:3000",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Test|Gateway}}/invoices/search",
+							"host": [
+								"{{Test|Gateway}}"
+							],
+							"path": [
+								"invoices",
+								"search"
+							],
+							"query": [
+								{
+									"key": "customerNumber",
+									"value": "US206",
+									"disabled": true
+								},
+								{
+									"key": "visibleToCustomer",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Invoice",
 					"id": "d236dbd9-17a7-4efa-b59c-1c721e4d71e6",
 					"protocolProfileBehavior": {
