@@ -1626,6 +1626,34 @@
 						"url": "https://gatewaytest.vixxo.com/api/sr/tn/1-4066601702"
 					},
 					"response": []
+				},
+				{
+					"name": "https://validation.vixxolink.com/eapi/invoice/760611542/lineitem",
+					"id": "a33031e4-0dfc-439a-bac6-7c05486a43f8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiIsImtpZCI6InNwei1SRG9Ea001WExLSVJpRk1MZU94dTZRNXpTMVQ3QmwyajN3SldUeFkiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiI4OGZlYjZkMC1lZjkyLTRlM2EtODdiNS05MTA5MjM1MGE2ZWYiLCJpc3MiOiJodHRwczovL3ZpeHhvYjJjZGV2LmIyY2xvZ2luLmNvbS9mYTc2MjdlYi0wNzdmLTQzY2QtODg2Zi01MWI4NWFmNWFiMGYvdjIuMC8iLCJleHAiOjE3NzQ1MDkyNDcsIm5iZiI6MTc3NDQyMjg0Nywic3ViIjoiOTFmYmJjYzYtNTc5YS00ZTM4LTk4OWQtMjBlODEyM2I5ZWNiIiwib2lkIjoiOTFmYmJjYzYtNTc5YS00ZTM4LTk4OWQtMjBlODEyM2I5ZWNiIiwibmFtZSI6ImRhcnNoYW5hIiwiZ2l2ZW5fbmFtZSI6ImRhcnNoYW5hIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwiaHR0cHM6Ly92aXh4by5jb20vZ3JvdXBzIjpbIlNlcnZpY2UgUHJvdmlkZXIiLCJVc2VyIE1hbmFnZW1lbnQgQWRtaW5pc3RyYXRvciIsIlJlcG9ydCBWaWV3ZXIiLCJTZXJ2aWNlIFByb3ZpZGVyIE1vYmlsZSIsIlNlcnZpY2UgUHJvdmlkZXIgQ29udHJvbGxlciIsIlNlcnZpY2UgUHJvdmlkZXIgRmluYW5jaWFsIiwiRm9ybXMgQWRtaW5pc3RyYXRvciIsIlRWQSBBY2Nlc3MiXSwiaHR0cHM6Ly92aXh4by5jb20vZW1haWwiOiJkYXJzaGFuYTE5c3BAbWFpbGluYXRvci5jb20iLCJjb3JyZWxhdGlvbklkIjoiN2ZiOGRjZTMtMzU5Ny00NDM5LTkyYmEtODIyOTA0MTg3ZWVlIiwibm9uY2UiOiIwMTlkMWYzNC1lZGIyLTdlNzQtYmY2OC1iN2VjMWJkNmE1OGEiLCJzY3AiOiJvcGVuaWQiLCJhenAiOiI4OGZlYjZkMC1lZjkyLTRlM2EtODdiNS05MTA5MjM1MGE2ZWYiLCJ2ZXIiOiIxLjAiLCJpYXQiOjE3NzQ0MjI4NDd9.tAqnlNhaLCUXhe_9O-U_4kFug4yIavOyHCazN6BwLOxILQXRlA-SA_PWH8QsuhVs1d9_yUtMPgRfQjRZP1LyF4E6Rb-nfJXMVtYbVJE4eLqZb5HwvhVZuNkewS8bBxQI6olS6kwTg3yTsL4J3Ske0DSi2B2osrqU-8Wq1BC0aZbFSwPxHYRHe1Non4u1hk79B870pTPQOMhkSOidRMe6EJ3Bvqu_CjgPgqFaT00VrC8fgTC9Vkl_oQJPAQPKVT2geCNyj0_pqTs2TGQOELrJXqblviSzJlxrRrRkl8lL4m0YNCY8pMK1UfkwmCofxvgTe812QejSIjTgysZhHPFe6w"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Charged Tax\",\n    \"quantity\": 1,\n    \"price\": 20,\n    \"typeCode\": \"T\",\n    \"assetId\": null,\n    \"productId\": null,\n    \"actionId\": null,\n    \"ormbCalculatedUnitPrice\": null,\n    \"ormbPriceOverrideNote\": null,\n    \"capsFailureNote\": null,\n    \"warrantyTag\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://validation.vixxolink.com/eapi/invoice/760611542/lineitem"
+					},
+					"response": []
 				}
 			],
 			"id": "3d0dbb14-07cb-44d7-9c5a-99edaaf8b99c"
