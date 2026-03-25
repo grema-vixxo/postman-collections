@@ -1672,14 +1672,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"description\": \"Charged Tax\",\n    \"quantity\": 1,\n    \"price\": 20,\n    \"typeCode\": \"T\",\n    \"assetId\": null,\n    \"productId\": null,\n    \"actionId\": null,\n    \"ormbCalculatedUnitPrice\": null,\n    \"ormbPriceOverrideNote\": null,\n    \"capsFailureNote\": null,\n    \"warrantyTag\": null\n}",
+							"raw": "{\n    \"description\": \"Charged Tax\",\n    \"typeCode\": \"T\",\n    \"incurredOrProposed\": null,\n    \"customerPricingDetail\": {},\n    \"serviceProviderPricingDetail\": {\n        \"quantity\": 1,\n        \"unitPrice\": 1,\n        \"ormbCalculatedUnitPrice\": null,\n        \"ormbPriceOverrideNote\": null\n    },\n    \"action\": {},\n    \"capsFailureNote\": null,\n    \"productId\": null,\n    \"assetId\": null,\n    \"warrantyTag\": null\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "https://validation.vixxolink.com/eapi/invoice/760611542/lineitem"
+						"url": "https://validation.vixxolink.com/eapi/quote/8003141/lineItem/17340369"
 					},
 					"response": []
 				}
